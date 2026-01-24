@@ -5,27 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
-    <title>TexWolf | Free Local LaTeX Editor</title>
-    <meta name="title" content="TexWolf | Free Local LaTeX Editor & Offline Overleaf Alternative">
+    <!-- KILLER SEO CONFIGURATION -->
+    <title>TexWolf | The Royal Local LaTeX Editor & Compendium</title>
+    <meta name="title" content="TexWolf | Best Free Offline LaTeX Editor & Overleaf Alternative">
     <meta name="description"
-        content="The fastest local LaTeX editor for astronomy research papers and thesis writing. A privacy-focused, offline alternative to Overleaf using WebAssembly. No queues, zero latency.">
+        content="Download TexWolf: The #1 free offline LaTeX editor for Windows, Mac & Linux. The ultimate privacy-focused Overleaf alternative. Write research papers without internet using WebAssembly. Zero latency.">
     <meta name="keywords"
-        content="LaTeX editor, Overleaf alternative, Offline LaTeX, Astronomy research paper, TexWolf, Local LaTeX, WebAssembly LaTeX, write thesis offline, scientific writing tool, ApJ template, MNRAS template">
+        content="LaTeX editor, best latex editor, Overleaf alternative, Offline LaTeX, LaTeX for Windows, LaTeX for Mac, TexWolf, Local LaTeX, WebAssembly LaTeX, write thesis offline, scientific writing tool, astronomy research, physics paper, free latex compiler, download latex">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="author" content="Jashanpreet Singh Dingra">
+    <meta name="revisit-after" content="2 days">
 
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.texwolf.com/">
-    <meta property="og:title" content="TexWolf - The Offline Overleaf Alternative">
+    <meta property="og:title" content="TexWolf - The #1 Offline Overleaf Alternative">
     <meta property="og:description"
-        content="Write Astronomy research papers and thesis projects without internet. 100% Local, Privacy-First LaTeX Editor.">
+        content="Write Astronomy & Physics research papers without internet. 100% Local, Privacy-First LaTeX Editor for Windows, Mac & Linux.">
     <meta property="og:image" content="https://www.texwolf.com/dark.png">
+    <meta property="og:image:alt" content="TexWolf Interface - Offline LaTeX Editor">
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.texwolf.com/">
-    <meta property="twitter:title" content="TexWolf - Local LaTeX Editor">
+    <meta property="twitter:title" content="TexWolf - Best Local LaTeX Editor">
     <meta property="twitter:description"
-        content="Don't let no wifi stop your research. The best offline alternative to Overleaf.">
+        content="Don't let no wifi stop your research. The best offline alternative to Overleaf. Download now.">
     <meta property="twitter:image" content="https://www.texwolf.com/dark.png">
 
     <link rel="canonical" href="https://www.texwolf.com/" />
@@ -36,31 +42,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Reenie+Beanie&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Reenie+Beanie&display=swap"
         rel="stylesheet">
 
 
     <style>
-        /* Base Settings */
+        /* Base Settings - NAVY & OFF-WHITE THEME */
         :root {
-            --paper-bg: #FDFBF7;
-            --academic-blue: #003366;
-            --link-blue: #2563EB;
+            --paper-bg: #FDFBF7; /* Clean Off-White */
+            --ink-black: #003366; /* Navy Blue Text */
+            --academic-blue: #002244; /* Darker Royal Navy */
+            --oxblood-red: #8B0000; /* Deep Red Accent */
+            --sepia-border: #003366; /* Navy Border */
+            --highlight-bg: #f0f4f8; /* Light Blueish White */
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Crimson Pro', serif;
             background-color: var(--paper-bg);
-            color: #1F2937;
+            color: var(--ink-black);
             -webkit-font-smoothing: antialiased;
+            /* Subtle paper texture overlay - kept for vibe but lighter */
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
         }
 
         /* Typography Overrides */
         h1,
         h2,
         h3,
-        .serif-font {
-            font-family: 'Crimson Pro', serif;
+        .serif-font,
+        .font-serif {
+            font-family: 'IM Fell English', serif !important;
+            letter-spacing: -0.01em;
         }
 
         .code-font,
@@ -72,38 +85,32 @@
             font-family: 'Reenie Beanie', cursive;
         }
 
-        /* Graph Paper Background Pattern */
-        .bg-graph-paper {
-            background-color: var(--paper-bg);
-            background-image: linear-gradient(#E5E7EB 1px, transparent 1px),
-                linear-gradient(90deg, #E5E7EB 1px, transparent 1px);
-            background-size: 24px 24px;
-            background-position: center top;
-        }
-
-        /* Masking the graph paper */
+        /* Masking */
         .hero-mask {
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            opacity: 0.4;
         }
 
         .glass-panel {
-            background: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(253, 251, 247, 0.96);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-bottom: 3px double rgba(0, 51, 102, 0.3);
         }
 
         /* Sticky Note Styles */
         .sticky-note {
-            box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 3px 4px 12px rgba(0, 34, 68, 0.15);
             transition: transform 0.2s ease-in-out;
+            background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+            background-color: #f0f4f8; /* Light blueish off-white */
         }
         
         .sticky-note:hover {
             transform: scale(1.02) rotate(0deg) !important;
             z-index: 10;
-            box-shadow: 4px 6px 15px rgba(0,0,0,0.15);
+            box-shadow: 6px 8px 20px rgba(0, 34, 68, 0.2);
         }
 
         /* Smooth Animations */
@@ -123,6 +130,12 @@
             animation: fadeIn 0.6s ease-out forwards;
         }
 
+        /* Shimmer Animation */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
@@ -130,8 +143,9 @@
         /* App Window Styles */
         .app-window-shadow {
             box-shadow:
-                0 20px 50px -12px rgba(0, 51, 102, 0.2),
-                0 0 0 1px rgba(0, 0, 0, 0.05);
+                0 25px 60px -15px rgba(0, 34, 68, 0.4),
+                0 0 0 1px rgba(0, 51, 102, 0.2);
+            border: 1px solid var(--sepia-border);
         }
 
         /* Marquee Animation */
@@ -161,6 +175,20 @@
         }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: var(--ink-black);
+            cursor: pointer;
+            margin-top: -7px;
+            border: 2px solid #fff;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #cbd5e1;
+            border-radius: 2px;
         }
         input[type=range]:focus {
             outline: none;
@@ -169,65 +197,101 @@
         /* Mobile Navigation Overlay */
         #mobile-menu {
             transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            background-color: var(--paper-bg);
         }
         .mobile-menu-open {
             opacity: 1 !important;
             pointer-events: auto !important;
             transform: translateY(0) !important;
         }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: var(--highlight-bg);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: var(--ink-black);
+            border-radius: 4px;
+            border: 1px solid var(--highlight-bg);
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: var(--ink-black);
+            color: var(--paper-bg);
+        }
     </style>
     
+    <!-- ENHANCED STRUCTURED DATA FOR GOOGLE -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "TexWolf",
-      "operatingSystem": "Windows, macOS, Linux, iOS",
+      "alternateName": "TexWolf LaTeX Editor",
+      "operatingSystem": "Windows, macOS, Linux, iOS, Android",
       "applicationCategory": "ProductivityApplication",
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
       },
-      "description": "A local-first, offline LaTeX editor alternative to Overleaf. Built for astronomy research and academic writing using WebAssembly.",
+      "description": "The fastest local LaTeX editor for astronomy research papers and thesis writing. A privacy-focused, offline alternative to Overleaf using WebAssembly.",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "120"
+        "ratingCount": "120",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "author": {
           "@type": "Person",
           "name": "Jashanpreet Singh Dingra",
           "url": "https://www.astrodingra.in"
-      }
+      },
+      "featureList": "Offline Compilation, WebAssembly Engine, Real-time Preview, Git Integration, P2P Collaboration",
+      "softwareRequirements": "Modern Web Browser"
     }
     </script>
 </head>
 
-<body class="min-h-screen flex flex-col selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+<body class="min-h-screen flex flex-col overflow-x-hidden">
 
-    <!-- Background Pattern -->
-    <div class="fixed inset-0 z-[-1] bg-graph-paper hero-mask pointer-events-none"></div>
+    <!-- Background Pattern - Using Navy Blue for grid -->
+    <div class="fixed inset-0 z-[-1] hero-mask pointer-events-none opacity-10" 
+         style="background-image: linear-gradient(var(--sepia-border) 1px, transparent 1px), linear-gradient(90deg, var(--sepia-border) 1px, transparent 1px); background-size: 40px 40px;"></div>
 
     <!-- Notification Bar -->
-    <div class="bg-amber-100/95 backdrop-blur-sm border-b border-amber-200 text-amber-900 px-4 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-medium shadow-sm relative z-50">
-        <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 fill-current mb-0.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"></path>
-            </svg>
-            <span>TexWolf currently works on Mac</span>
+    <div class="bg-[#f0f4f8] backdrop-blur-sm border-b border-[#003366]/20 text-[#003366] px-4 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-medium shadow-md relative z-50 overflow-hidden">
+        
+        <!-- Subtle Shimmer Animation on Bar -->
+        <div class="absolute inset-0 -translate-x-full animate-[shimmer_4s_infinite] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none"></div>
+
+        <div class="flex items-center gap-2 relative z-10">
+            <!-- Pulsing Dot -->
+            <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#8B0000]"></span>
+            </span>
+            
+            <span class="font-serif font-bold text-[#003366] italic tracking-wide">Gazette: TexWolf is now available on Windows & Mac</span>
+            
+            <!-- Badge -->
+            <span class="bg-[#003366] text-[#FDFBF7] text-[10px] px-1.5 py-0.5 rounded-sm font-serif border border-[#002244] shadow-sm animate-pulse hidden sm:inline-block">LATEST EDITION</span>
         </div>
-        <span class="hidden sm:inline text-amber-300">|</span>
-        <div class="flex items-center gap-2 opacity-75">
-            <span>Releasing soon for</span>
+        
+        <span class="hidden sm:inline text-[#003366]/50 relative z-10 mx-2">♦</span>
+        
+        <div class="flex items-center gap-2 opacity-80 relative z-10 font-serif italic text-[#334455]">
+            <span>Forthcoming on</span>
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-1">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4h-13.051M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" /></svg>
-                    <span class="sm:hidden font-bold">Win</span>
-                </div>
-                <span class="sm:hidden">&</span>
-                <div class="flex items-center gap-1">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 0 0-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 0 0-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 0 1-.004-.021l-.004-.024a1.807 1.807 0 0 1-.15.706.953.953 0 0 1-.213.335.71.71 0 0 0-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 0 0-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 0 0-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 0 0-.205.334 1.18 1.18 0 0 0-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 0 1-.018-.2v-.02a1.772 1.772 0 0 1 .15-.768 1.08 1.08 0 0 1 .43-.533.985.985 0 0 1 .594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 0 0-.166-.267.248.248 0 0 0-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 0 0-.12.27.944.944 0 0 0-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 0 1-.131.068 2.62 2.62 0 0 1-.275-.402 1.772 1.772 0 0 1-.155-.667 1.759 1.759 0 0 1 .08-.668 1.43 1.43 0 0 1 .283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 0 1 .016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 0 1-.448-.067 3.566 3.566 0 0 1-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 0 0-.402-.533 1.45 1.45 0 0 0-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 0 0 .314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 0 1 .647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 0 1-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.05v.02h.003z"/></svg>
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 0 0-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 0 0-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 0 1-.004-.021l-.004-.024a1.807 1.807 0 0 1-.15.706.953.953 0 0 1-.213.335.71.71 0 0 0-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 0 0-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 0 0-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 0 0-.205.334 1.18 1.18 0 0 0-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 0 1-.018-.2v-.02a1.772 1.772 0 0 1 .15-.768 1.08 1.08 0 0 1 .43-.533.985.985 0 0 1 .594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 0 0-.166-.267.248.248 0 0 0-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 0 0-.12.27.944.944 0 0 0-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 0 1-.131.068 2.62 2.62 0 0 1-.275-.402 1.772 1.772 0 0 1-.155-.667 1.759 1.759 0 0 1 .08-.668 1.43 1.43 0 0 1 .283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 0 1 .016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 0 1-.448-.067 3.566 3.566 0 0 1-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 0 0-.402-.533 1.45 1.45 0 0 0-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 0 0 .314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 0 1 .647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 0 1-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.05v.02h.003z"/></svg>
                     <span class="sm:hidden font-bold">Linux</span>
                 </div>
             </div>
@@ -241,24 +305,24 @@
             <div class="flex items-center gap-3 cursor-pointer z-50"
                 onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <img src="dark.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
-                    alt="TexWolf Logo" class="h-8 sm:h-10 w-auto object-contain">
-                <div class="hidden w-10 h-10 bg-[#003366] rounded-md flex items-center justify-center text-white shadow-sm shrink-0">
+                    alt="TexWolf Logo - Best Free LaTeX Editor" class="h-8 sm:h-10 w-auto object-contain sepia opacity-80">
+                <div class="hidden w-10 h-10 bg-[#003366] rounded-sm border border-[#002244] flex items-center justify-center text-[#FDFBF7] shadow-sm shrink-0">
                     <span class="font-serif italic font-bold text-lg">T</span>
                 </div>
-                <span class="font-serif font-bold text-lg sm:text-xl tracking-tight text-[#003366]">TexWolf</span>
+                <span class="font-serif font-bold text-xl tracking-tight text-[#003366] uppercase" style="letter-spacing: 0.05em;">TexWolf</span>
             </div>
 
             <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-6 md:gap-8 text-sm font-medium text-gray-500">
-                <a href="#features" class="hover:text-[#003366] transition-colors">Features</a>
-                <a href="#reviews" class="hover:text-[#003366] transition-colors">Field Notes</a>
-                <a href="#pricing" class="hover:text-[#003366] transition-colors">Support</a>
-                <a href="#community" class="hover:text-[#003366] transition-colors">Feedback</a>
+            <div class="hidden md:flex items-center gap-6 md:gap-8 text-sm font-semibold tracking-wide text-[#002244] font-serif uppercase text-[11px]">
+                <a href="#features" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]">Features</a>
+                <a href="#reviews" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]">Field Notes</a>
+                <a href="#pricing" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]">Patronage</a>
+                <a href="#community" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]">Correspondence</a>
             </div>
 
             <!-- Mobile Menu Button -->
             <button onclick="toggleMobileMenu()"
-                class="md:hidden p-2 text-gray-600 z-50 hover:bg-gray-100 rounded-lg transition-colors">
+                class="md:hidden p-2 text-[#002244] z-50 hover:bg-[#003366]/10 rounded-sm transition-colors border border-transparent hover:border-[#003366]/30">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
@@ -266,71 +330,69 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed top-0 left-0 w-full h-screen bg-[#FDFBF7] flex flex-col items-center justify-center gap-8 text-xl font-serif opacity-0 pointer-events-none -translate-y-4 md:hidden z-40 transition-all duration-300">
+        class="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center gap-8 text-xl font-serif opacity-0 pointer-events-none -translate-y-4 md:hidden z-40 transition-all duration-300">
         <a href="#features" onclick="toggleMobileMenu()"
-            class="text-[#003366] py-4 w-full text-center hover:bg-gray-50 active:bg-gray-100">Features</a>
+            class="text-[#003366] py-4 w-full text-center hover:bg-[#f0f4f8] active:bg-[#e0e4e8] italic">Features</a>
         <a href="#reviews" onclick="toggleMobileMenu()"
-            class="text-[#003366] py-4 w-full text-center hover:bg-gray-50 active:bg-gray-100">Field Notes</a>
+            class="text-[#003366] py-4 w-full text-center hover:bg-[#f0f4f8] active:bg-[#e0e4e8] italic">Field Notes</a>
         <a href="#pricing" onclick="toggleMobileMenu()"
-            class="text-[#003366] py-4 w-full text-center hover:bg-gray-50 active:bg-gray-100">Support</a>
+            class="text-[#003366] py-4 w-full text-center hover:bg-[#f0f4f8] active:bg-[#e0e4e8] italic">Patronage</a>
         <a href="#community" onclick="toggleMobileMenu()"
-            class="text-[#003366] py-4 w-full text-center hover:bg-gray-50 active:bg-gray-100">Feedback</a>
+            class="text-[#003366] py-4 w-full text-center hover:bg-[#f0f4f8] active:bg-[#e0e4e8] italic">Correspondence</a>
         <button onclick="toggleMobileMenu()"
-            class="absolute top-4 right-4 p-3 hover:bg-gray-100 rounded-full transition-colors"><i data-lucide="x"
-                class="w-8 h-8 text-gray-400"></i></button>
+            class="absolute top-4 right-4 p-3 hover:bg-[#f0f4f8] rounded-full transition-colors"><i data-lucide="x"
+                class="w-8 h-8 text-[#002244]"></i></button>
     </div>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-8 pb-16 px-4 sm:px-6">
+    <main class="flex-grow pt-10 pb-16 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
 
             <!-- Hero Section -->
-            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[auto] lg:min-h-[500px] mb-12">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[auto] lg:min-h-[500px] mb-16">
 
                 <!-- Left: Value Prop -->
                 <div class="space-y-6 md:space-y-8 animate-fade-in pt-4 lg:pt-0">
                     <div
-                        class="inline-flex items-center gap-2 px-3 py-1 rounded border border-blue-100 bg-blue-50/50 text-blue-800 text-xs font-mono">
-                        <span class="text-blue-400">\textbf{v1.0}</span> is live
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-[#003366] bg-[#003366] text-[#FDFBF7] text-xs font-serif uppercase tracking-widest shadow-sm">
+                        <span class="text-[#B8860B] font-bold">Vol. 1.0</span> &nbsp;—&nbsp; Now Available
                     </div>
 
                     <h1
-                        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-slate-900 leading-[1.15] md:leading-[1.1]">
+                        class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal tracking-tight text-[#003366] leading-[1] md:leading-[0.9]">
                         No uploads.<br>
                         No queues.<br>
-                        <span class="text-gray-400 italic">Online & Offline.</span>
+                        <span class="text-[#002244] italic text-4xl sm:text-5xl md:text-6xl block mt-2">The Scholar's Offline Compendium.</span>
                     </h1>
 
-                    <div class="relative">
-                        <div class="absolute -left-4 top-0 bottom-0 w-1 bg-gray-200 rounded-full hidden sm:block"></div>
+                    <div class="relative pl-6 border-l-2 border-[#003366] border-double">
                         <p
-                            class="sm:pl-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-md leading-relaxed font-serif">
-                            TexWolf runs a full <span class="font-bold text-[#003366]">LaTeX</span> compiler directly in
-                            your browser using WebAssembly. Collaborate online or work privately offline.
+                            class="text-lg sm:text-xl text-[#002244] max-w-md leading-relaxed font-serif">
+                            <strong class="text-[#8B0000]">TexWolf</strong> operates a complete <span class="font-bold">LaTeX</span> typesetter directly within your browser's engine. A distinguished, privacy-first alternative to Overleaf for the modern academic.
                         </p>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
-                        <div class="flex items-center gap-2 text-sm text-gray-600 font-medium">
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 border-t border-[#003366]/20 mt-4">
+                        <div class="flex items-center gap-2 text-sm text-[#002244] font-serif italic">
                             <div
-                                class="w-8 h-8 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+                                class="w-8 h-8 rounded-sm bg-[#e0f2fe] border border-[#003366] flex items-center justify-center text-[#003366] shrink-0">
                                 <i data-lucide="zap" class="w-4 h-4"></i>
                             </div>
-                            <span>Zero Latency</span>
+                            <span>Instant Typesetting</span>
                         </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-600 font-medium">
+                        <div class="flex items-center gap-2 text-sm text-[#002244] font-serif italic">
                             <div
-                                class="w-8 h-8 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+                                class="w-8 h-8 rounded-sm bg-[#e0f2fe] border border-[#003366] flex items-center justify-center text-[#003366] shrink-0">
                                 <i data-lucide="wifi-off" class="w-4 h-4"></i>
                             </div>
-                            <span>Works Offline</span>
+                            <span>Works in Isolation</span>
                         </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-600 font-medium">
+                        <div class="flex items-center gap-2 text-sm text-[#002244] font-serif italic">
                             <div
-                                class="w-8 h-8 rounded-full bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 shrink-0">
+                                class="w-8 h-8 rounded-sm bg-[#e0f2fe] border border-[#003366] flex items-center justify-center text-[#003366] shrink-0">
                                 <i data-lucide="users" class="w-4 h-4"></i>
                             </div>
-                            <span>Unlimited Collaboration</span>
+                            <span>Peer Collaboration</span>
                         </div>
                     </div>
                 </div>
@@ -339,53 +401,56 @@
                 <div class="w-full max-w-md mx-auto lg:ml-auto animate-fade-in delay-200 mt-8 lg:mt-0">
                     <div class="relative group">
                         <div
-                            class="absolute -inset-0.5 bg-gradient-to-r from-gray-200 to-gray-100 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000">
+                            class="absolute -inset-1 bg-[#002244] rounded-sm blur opacity-20 group-hover:opacity-30 transition duration-1000">
                         </div>
                         <div
-                            class="relative bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden p-6 sm:p-8 min-h-[360px] flex flex-col justify-center">
+                            class="relative bg-[#f0f4f8] rounded-sm shadow-2xl border-4 border-double border-[#003366] overflow-hidden p-6 sm:p-8 min-h-[360px] flex flex-col justify-center" style="background-image: url('https://www.transparenttextures.com/patterns/cardboard.png');">
+
+                            <!-- Decoration -->
+                            <div class="absolute top-0 left-0 w-full h-1 bg-[#8B0000]"></div>
+                            <div class="absolute bottom-0 left-0 w-full h-1 bg-[#8B0000]"></div>
 
                             <!-- Step 1: Input Form -->
                             <div id="access-form-container" class="transition-all duration-500 ease-in-out">
                                 <div class="text-center mb-6 sm:mb-8">
-                                    <h3 class="text-2xl font-serif text-[#003366] italic">Get Started</h3>
-                                    <p class="text-xs text-gray-400 font-mono mt-2">Enter your details to access the build</p>
+                                    <h3 class="text-3xl font-serif text-[#003366] italic border-b border-[#003366]/30 pb-2 inline-block">Begin Manuscript</h3>
+                                    <p class="text-xs text-[#002244] font-mono mt-3 uppercase tracking-widest">Enter Credentials</p>
                                 </div>
 
-                                <form onsubmit="handleStartWriting(event)" class="space-y-4">
+                                <form onsubmit="handleStartWriting(event)" class="space-y-5">
                                     <div>
                                         <label
-                                            class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 ml-1">Email</label>
-                                        <input type="email" id="email-input" required placeholder="name@university.edu"
-                                            class="w-full px-4 py-3 sm:py-2.5 bg-[#F9F9F9] border border-gray-300 rounded-lg text-base sm:text-sm font-serif focus:outline-none focus:bg-white focus:border-[#003366] focus:ring-1 focus:ring-[#003366] transition-all placeholder-gray-400">
+                                            class="block text-xs font-bold uppercase tracking-widest text-[#002244] mb-1.5 ml-1 font-serif">Email Address</label>
+                                        <input type="email" id="email-input" required placeholder="scholar@university.edu"
+                                            class="w-full px-4 py-3 sm:py-2.5 bg-[#FDFBF7] border border-[#003366] rounded-none text-base sm:text-lg font-serif focus:outline-none focus:bg-[#fff] focus:border-[#8B0000] focus:ring-0 transition-all placeholder-[#003366]/60 text-[#003366]">
                                     </div>
 
                                     <div>
                                         <label
-                                            class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 ml-1">Institute
-                                            Name</label>
+                                            class="block text-xs font-bold uppercase tracking-widest text-[#002244] mb-1.5 ml-1 font-serif">Institute / Affiliation</label>
                                         <input type="text" id="institute-input" required
-                                            placeholder="e.g. MIT, Stanford, Self-Taught"
-                                            class="w-full px-4 py-3 sm:py-2.5 bg-[#F9F9F9] border border-gray-300 rounded-lg text-base sm:text-sm font-serif focus:outline-none focus:bg-white focus:border-[#003366] focus:ring-1 focus:ring-[#003366] transition-all placeholder-gray-400">
+                                            placeholder="e.g. Royal Society, Oxford, Self-Taught"
+                                            class="w-full px-4 py-3 sm:py-2.5 bg-[#FDFBF7] border border-[#003366] rounded-none text-base sm:text-lg font-serif focus:outline-none focus:bg-[#fff] focus:border-[#8B0000] focus:ring-0 transition-all placeholder-[#003366]/60 text-[#003366]">
                                     </div>
 
                                     <button type="submit" id="submit-btn"
-                                        class="w-full py-3 mt-4 bg-[#003366] hover:bg-[#002244] text-white font-serif italic text-lg rounded-lg shadow-md transition-all transform active:scale-[0.98] flex justify-center items-center gap-2">
-                                        <span>Start Writing</span>
+                                        class="w-full py-3 mt-6 bg-[#002244] hover:bg-[#003366] text-[#FDFBF7] font-serif uppercase tracking-widest text-sm font-bold rounded-sm shadow-md transition-all border border-[#001122] flex justify-center items-center gap-2 hover:shadow-lg">
+                                        <span>Commence Writing</span>
                                         <i data-lucide="pen-tool" class="w-4 h-4"></i>
                                     </button>
                                 </form>
                             </div>
 
-                            <!-- Step 2: Download Options (Hidden Initially) -->
+                            <!-- Step 2: Download Options -->
                             <div id="download-container"
                                 class="hidden opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out text-center">
                                 <div class="mb-6">
                                     <div
-                                        class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600 animate-pulse">
+                                        class="w-16 h-16 border-2 border-[#8B0000] rounded-full flex items-center justify-center mx-auto mb-4 text-[#8B0000] bg-[#FDFBF7]">
                                         <i data-lucide="check" class="w-8 h-8"></i>
                                     </div>
-                                    <h3 class="text-xl font-serif text-[#003366]">Ready to Install</h3>
-                                    <p class="text-xs text-gray-500 font-mono mt-2" id="os-detected-text">Detecting OS...</p>
+                                    <h3 class="text-2xl font-serif text-[#003366]">Ready to Install</h3>
+                                    <p class="text-xs text-[#002244] font-mono mt-2 uppercase tracking-wide" id="os-detected-text">Detecting Platform...</p>
                                 </div>
 
                                 <!-- Dynamic Button Area -->
@@ -398,56 +463,56 @@
             </div>
 
             <!-- App Preview Section -->
-            <div class="mb-24 animate-fade-in delay-300 relative">
-                <!-- Decorative Elements -->
-                <div class="absolute -top-12 -left-12 w-48 h-48 md:w-64 md:h-64 bg-blue-200/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-12 -right-12 w-48 h-48 md:w-64 md:h-64 bg-amber-200/20 rounded-full blur-3xl pointer-events-none"></div>
-
+            <div class="mb-24 animate-fade-in delay-300 relative px-4">
                 <!-- Browser Window Mockup -->
-                <div class="relative bg-white rounded-xl app-window-shadow border border-gray-200/60 overflow-hidden transform transition-transform hover:scale-[1.005] duration-500 group">
+                <div class="relative bg-[#f0f4f8] rounded-sm app-window-shadow overflow-hidden transform transition-transform hover:scale-[1.005] duration-500 group max-w-5xl mx-auto">
+                    <!-- Window Header -->
                     <div
-                        class="bg-gray-100/90 backdrop-blur border-b border-gray-200 p-3 flex items-center justify-between absolute top-0 w-full z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded-full bg-[#FF5F57] border border-black/10"></div>
-                            <div class="w-3 h-3 rounded-full bg-[#FEBC2E] border border-black/10"></div>
-                            <div class="w-3 h-3 rounded-full bg-[#28C840] border border-black/10"></div>
+                        class="bg-[#e2e8f0] border-b border-[#cbd5e1] p-2 flex items-center justify-between relative z-10">
+                        <div class="flex items-center gap-2 ml-2">
+                            <div class="w-3 h-3 rounded-full border border-[#94a3b8] bg-[#cbd5e1]"></div>
+                            <div class="w-3 h-3 rounded-full border border-[#94a3b8] bg-[#cbd5e1]"></div>
+                            <div class="w-3 h-3 rounded-full border border-[#94a3b8] bg-[#cbd5e1]"></div>
                         </div>
-                        <div class="text-xs font-mono text-gray-500 hidden sm:block">thesis_final_v2.tex</div>
+                        <div class="text-xs font-serif text-[#003366] tracking-widest uppercase">thesis_final_v2.tex</div>
                         <div class="w-10"></div>
                     </div>
 
                     <!-- App Screenshot -->
-                    <div class="aspect-[16/10] bg-gray-50 flex items-center justify-center text-gray-400">
-                        <img src="main.png" alt="TexWolf App Interface"
-                            class="w-full h-auto object-cover block grayscale opacity-90 hover:grayscale-0 transition-all duration-500">
+                    <div class="aspect-[16/10] bg-[#0f172a] flex items-center justify-center text-gray-400 relative">
+                        <div class="absolute inset-0 bg-[#002244] opacity-10 mix-blend-overlay pointer-events-none"></div>
+                        <img src="main.png" alt="TexWolf App Interface - Offline Overleaf Alternative"
+                            class="w-full h-auto object-cover block opacity-90 hover:opacity-100 transition-all duration-500">
                     </div>
                 </div>
+                
+                <div class="text-center mt-4 text-xs font-serif italic text-[#003366]">Fig. 1: The Typesetting Environment</div>
             </div>
 
             <!-- Trusted By / Marquee Section -->
-            <div class="border-y border-gray-200 py-10 mb-12 overflow-hidden">
-                <div class="max-w-full mx-auto flex flex-col items-center justify-center gap-8">
-                    <p class="text-sm font-serif italic text-gray-500 whitespace-nowrap"> <b>Trusted by researchers and students at</b></p>
+            <div class="border-y-2 border-double border-[#003366]/30 py-10 mb-16 overflow-hidden bg-[#e0f2fe]/40">
+                <div class="max-w-full mx-auto flex flex-col items-center justify-center gap-6">
+                    <p class="text-xs font-serif uppercase tracking-[0.2em] text-[#002244] whitespace-nowrap">Trusted by Scholars at</p>
                     <div class="w-full relative marquee-mask">
                         <div class="flex animate-marquee items-center gap-0">
                             <!-- Set 1 -->
-                            <div class="flex items-center gap-12 md:gap-24 px-6 md:px-12 shrink-0">
-                                <img src="https://i.namu.wiki/i/CM9fTLKwlMOWm7M957vfXBJ_9Ev4z4lUjyVshFgJyt4S6NJ9p2vWCvGW0NukkJsWxVrExXin6CfgCtBvvFUOMQ.webp" alt="Max Planck Society" class="h-24 md:h-28 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Logo_of_Aryabhatta_Research_Institute_of_Observational_Sciences.png" alt="Aries" class="h-8 md:h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/1/1b/Indian_Institute_of_Space_Science_and_Technology_Logo.png" alt="iist" class="h-20 md:h-24 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/LMU_Muenchen_Logo.svg/1200px-LMU_Muenchen_Logo.svg.png" alt="LMU Munich" class="h-12 md:h-20 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Indian_Institute_of_Technology_Delhi_Logo.svg/500px-Indian_Institute_of_Technology_Delhi_Logo.svg.png" alt="iitd" class="h-20 md:h-24 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://www.iucaa.in/ws/~CCU/img/IUCCA_Logo.png" alt="iucaa" class="h-20 md:h-24 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://www.cuhimachal.ac.in/asset/images/logo1.jpg" alt="cuhp" class="h-20 md:h-24 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                            <div class="flex items-center gap-16 md:gap-32 px-6 md:px-12 shrink-0 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 mix-blend-multiply">
+                                <img src="https://i.namu.wiki/i/CM9fTLKwlMOWm7M957vfXBJ_9Ev4z4lUjyVshFgJyt4S6NJ9p2vWCvGW0NukkJsWxVrExXin6CfgCtBvvFUOMQ.webp" alt="Max Planck Society" class="h-20 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Logo_of_Aryabhatta_Research_Institute_of_Observational_Sciences.png" alt="Aries" class="h-10 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/1/1b/Indian_Institute_of_Space_Science_and_Technology_Logo.png" alt="iist" class="h-20 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/LMU_Muenchen_Logo.svg/1200px-LMU_Muenchen_Logo.svg.png" alt="LMU Munich" class="h-16 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Indian_Institute_of_Technology_Delhi_Logo.svg/500px-Indian_Institute_of_Technology_Delhi_Logo.svg.png" alt="iitd" class="h-20 w-auto object-contain">
+                                <img src="https://www.iucaa.in/ws/~CCU/img/IUCCA_Logo.png" alt="iucaa" class="h-20 w-auto object-contain">
+                                <img src="https://www.cuhimachal.ac.in/asset/images/logo1.jpg" alt="cuhp" class="h-20 w-auto object-contain">
                             </div>
                             <!-- Set 2 (Duplicate) -->
-                            <div class="flex items-center gap-12 md:gap-24 px-6 md:px-12 shrink-0">
-                                <img src="https://i.namu.wiki/i/CM9fTLKwlMOWm7M957vfXBJ_9Ev4z4lUjyVshFgJyt4S6NJ9p2vWCvGW0NukkJsWxVrExXin6CfgCtBvvFUOMQ.webp" alt="Max Planck Society" class="h-24 md:h-28 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Logo_of_Aryabhatta_Research_Institute_of_Observational_Sciences.png" alt="Aries" class="h-8 md:h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/1/1b/Indian_Institute_of_Space_Science_and_Technology_Logo.png" alt="IIST" class="h-12 md:h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://logos-world.net/wp-content/uploads/2022/02/UC-Berkeley-Symbol.png" alt="Berkeley" class="h-20 md:h-24 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/LMU_Muenchen_Logo.svg/1200px-LMU_Muenchen_Logo.svg.png" alt="LMU Munich" class="h-16 md:h-20 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/ETH_Z%C3%BCrich_Logo_black.svg/2560px-ETH_Z%C3%BCrich_Logo_black.svg.png" alt="ETH Zürich" class="h-8 md:h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                            <div class="flex items-center gap-16 md:gap-32 px-6 md:px-12 shrink-0 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 mix-blend-multiply">
+                                <img src="https://i.namu.wiki/i/CM9fTLKwlMOWm7M957vfXBJ_9Ev4z4lUjyVshFgJyt4S6NJ9p2vWCvGW0NukkJsWxVrExXin6CfgCtBvvFUOMQ.webp" alt="Max Planck Society" class="h-20 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Logo_of_Aryabhatta_Research_Institute_of_Observational_Sciences.png" alt="Aries" class="h-10 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/1/1b/Indian_Institute_of_Space_Science_and_Technology_Logo.png" alt="IIST" class="h-12 w-auto object-contain">
+                                <img src="https://logos-world.net/wp-content/uploads/2022/02/UC-Berkeley-Symbol.png" alt="Berkeley" class="h-20 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/LMU_Muenchen_Logo.svg/1200px-LMU_Muenchen_Logo.svg.png" alt="LMU Munich" class="h-16 w-auto object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/ETH_Z%C3%BCrich_Logo_black.svg/2560px-ETH_Z%C3%BCrich_Logo_black.svg.png" alt="ETH Zürich" class="h-8 w-auto object-contain">
                             </div>
                         </div>
                     </div>
@@ -456,141 +521,151 @@
 
             <!-- NEW: Power Features Grid -->
             <section id="features" class="py-12">
-                <div class="text-center mb-10">
-                    <span class="font-mono text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">\section{Power Tools}</span>
-                    <h2 class="text-3xl md:text-4xl font-serif text-[#003366] mt-4">Everything you asked for, locally.</h2>
+                <div class="text-center mb-16">
+                    <span class="font-serif italic text-[#8B0000] text-lg">Section II.</span>
+                    <h2 class="text-4xl md:text-5xl font-normal text-[#003366] mt-2 mb-4">The Tools of the Trade</h2>
+                    <div class="w-24 h-1 bg-[#002244] mx-auto double-border"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     <!-- Terminal -->
-                    <div class="p-6 bg-gray-900 text-white rounded-xl shadow-lg flex flex-col justify-between group">
+                    <div class="p-6 bg-[#002244] text-[#FDFBF7] rounded-sm shadow-xl flex flex-col justify-between group border border-[#001122] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <i data-lucide="terminal" class="w-24 h-24"></i>
+                        </div>
                         <div>
-                            <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center mb-4 group-hover:bg-gray-700 transition-colors">
-                                <i data-lucide="terminal" class="w-5 h-5 text-green-400"></i>
+                            <div class="w-12 h-12 rounded-sm border border-[#FDFBF7]/20 bg-[#001122] flex items-center justify-center mb-6">
+                                <i data-lucide="terminal" class="w-6 h-6 text-[#FDFBF7]"></i>
                             </div>
-                            <h3 class="text-lg font-bold font-mono text-green-400 mb-2">Integrated Terminal</h3>
-                            <p class="text-sm text-gray-400">Install packages instantly. Run <code class="bg-gray-800 px-1 py-0.5 rounded text-xs">tlmgr install</code> directly from the browser console.</p>
+                            <h3 class="text-xl font-serif text-[#FDFBF7] mb-3 tracking-wide">Integrated Terminal</h3>
+                            <p class="text-sm text-[#FDFBF7]/70 font-serif leading-relaxed">Install packages instantly. Run <code class="bg-black/30 px-1 py-0.5 rounded-sm border border-[#FDFBF7]/20 text-xs font-mono">tlmgr install</code> directly from the browser console.</p>
                         </div>
                     </div>
 
                     <!-- Visual Edit -->
-                    <div class="p-6 bg-white border border-gray-200 rounded-xl hover:border-blue-200 transition-all hover:shadow-md flex flex-col justify-between group">
+                    <div class="p-6 bg-[#f0f4f8] border-2 border-double border-[#003366]/40 rounded-sm hover:border-[#003366] transition-all hover:shadow-lg flex flex-col justify-between group">
                         <div>
-                            <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4 text-blue-600">
-                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            <div class="w-12 h-12 rounded-sm bg-[#e0f2fe] flex items-center justify-center mb-6 text-[#002244]">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="text-lg font-bold font-serif text-[#003366] mb-2">Visual Edit</h3>
-                            <p class="text-sm text-gray-600">Don't know LaTeX? No problem. Edit visually and let TexWolf generate the code.</p>
+                            <h3 class="text-xl font-serif text-[#003366] mb-3">Visual Typesetting</h3>
+                            <p class="text-sm text-[#002244] font-serif leading-relaxed">Don't know LaTeX? No problem. Edit visually and let TexWolf generate the code.</p>
                         </div>
                     </div>
 
                     <!-- Live Collab -->
-                    <div class="p-6 bg-white border border-gray-200 rounded-xl hover:border-purple-200 transition-all hover:shadow-md flex flex-col justify-between">
+                    <div class="p-6 bg-[#f0f4f8] border-2 border-double border-[#003366]/40 rounded-sm hover:border-[#003366] transition-all hover:shadow-lg flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center mb-4 text-purple-600">
-                                <i data-lucide="users" class="w-5 h-5"></i>
+                            <div class="w-12 h-12 rounded-sm bg-[#e0f2fe] flex items-center justify-center mb-6 text-[#002244]">
+                                <i data-lucide="users" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="text-lg font-bold font-serif text-[#003366] mb-2">Unlimited Peers</h3>
-                            <p class="text-sm text-gray-600">Live P2P collaboration. Add your entire lab group. No paywalls on team size.</p>
+                            <h3 class="text-xl font-serif text-[#003366] mb-3">Unlimited Peers</h3>
+                            <p class="text-sm text-[#002244] font-serif leading-relaxed">Live P2P collaboration. Add your entire lab group. No paywalls on team size.</p>
                         </div>
                     </div>
 
                     <!-- Chatbox -->
-                    <div class="p-6 bg-white border border-gray-200 rounded-xl hover:border-yellow-200 transition-all hover:shadow-md flex flex-col justify-between">
+                    <div class="p-6 bg-[#f0f4f8] border-2 border-double border-[#003366]/40 rounded-sm hover:border-[#003366] transition-all hover:shadow-lg flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 rounded-lg bg-yellow-50 flex items-center justify-center mb-4 text-yellow-600">
-                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                            <div class="w-12 h-12 rounded-sm bg-[#e0f2fe] flex items-center justify-center mb-6 text-[#002244]">
+                                <i data-lucide="message-square" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="text-lg font-bold font-serif text-[#003366] mb-2">Built-in Chatbox</h3>
-                            <p class="text-sm text-gray-600">Discuss equations without leaving the editor. Context-aware chat for co-authors.</p>
+                            <h3 class="text-xl font-serif text-[#003366] mb-3">Built-in Discourse</h3>
+                            <p class="text-sm text-[#002244] font-serif leading-relaxed">Discuss equations without leaving the editor. Context-aware chat for co-authors.</p>
                         </div>
                     </div>
 
                       <!-- Hybrid Core -->
-                      <div class="p-6 bg-gradient-to-br from-[#003366] to-[#004080] text-white rounded-xl shadow-lg flex flex-col justify-between">
+                      <div class="p-6 bg-[#8B0000] text-[#FDFBF7] rounded-sm shadow-xl flex flex-col justify-between border border-[#5e0000]">
                         <div>
-                            <div class="flex gap-2 mb-4">
-                                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-emerald-400">
+                            <div class="flex gap-2 mb-6">
+                                <div class="w-10 h-10 rounded-sm bg-black/20 flex items-center justify-center text-[#FDFBF7]">
                                     <i data-lucide="wifi" class="w-5 h-5"></i>
                                 </div>
-                                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/50">
+                                <div class="w-10 h-10 rounded-sm bg-black/20 flex items-center justify-center text-[#FDFBF7]/50">
                                     <i data-lucide="wifi-off" class="w-5 h-5"></i>
                                 </div>
                             </div>
-                            <h3 class="text-lg font-bold font-serif mb-2">Online & Offline</h3>
-                            <p class="text-sm text-blue-100">The hybrid core detects your connection. Sync when online, compile locally when offline.</p>
+                            <h3 class="text-xl font-serif mb-3 tracking-wide">Online & Offline</h3>
+                            <p class="text-sm text-[#FDFBF7]/80 font-serif leading-relaxed">The hybrid core detects your connection. Sync when online, compile locally when offline.</p>
                         </div>
                     </div>
 
                     <!-- AI (Coming Soon) -->
-                    <div class="relative overflow-hidden p-6 border border-gray-200 rounded-xl bg-gray-50 flex flex-col justify-between opacity-80">
-                        <div class="absolute top-3 right-3 bg-gray-800 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Coming Soon</div>
+                    <div class="relative overflow-hidden p-6 border-2 border-dashed border-[#003366]/30 rounded-sm bg-[#e0f2fe]/20 flex flex-col justify-between opacity-80">
+                        <div class="absolute top-3 right-3 bg-[#002244] text-[#FDFBF7] text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">Coming Soon</div>
                         <div>
-                            <div class="w-10 h-10 rounded-lg bg-gray-200 flex items-center justify-center mb-4 text-gray-500">
-                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            <div class="w-12 h-12 rounded-sm bg-[#e0f2fe] flex items-center justify-center mb-6 text-[#002244]">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="text-lg font-bold font-serif text-gray-700 mb-2">AI Copilot</h3>
-                            <p class="text-sm text-gray-500">Auto-complete equations, fix compilation errors, and summarize papers.</p>
+                            <h3 class="text-xl font-serif text-[#003366] mb-3">Automaton Copilot</h3>
+                            <p class="text-sm text-[#002244] font-serif leading-relaxed">Auto-complete equations, fix compilation errors, and summarize papers.</p>
                         </div>
                     </div>
 
                 </div>
             </section>
 <!-- REVIEWS SECTION (Sticky Note Style) -->
-<section id="reviews" class="py-12 md:py-16 bg-[#f7f5f0] -mx-4 sm:-mx-6 px-4 sm:px-6 relative">
+<section id="reviews" class="py-16 md:py-24 bg-[#e0f2fe] -mx-4 sm:-mx-6 px-4 sm:px-6 relative border-y border-[#003366]">
   
   <!-- Corkboard Texture Overlay -->
-  <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
+  <div class="absolute inset-0 opacity-40 pointer-events-none mix-blend-multiply"
        style="background-image: url('https://www.transparenttextures.com/patterns/cork-board.png');">
   </div>
 
-  <div class="text-center mb-10 md:mb-12 relative z-10">
-    <span class="font-mono text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">
-      \section{Field Notes}
-    </span>
-    <h2 class="text-3xl md:text-4xl font-serif text-[#003366] mt-4">
-      From the Notice Board
+  <div class="text-center mb-12 md:mb-16 relative z-10">
+    <span class="font-serif italic text-[#8B0000] text-lg">Section III.</span>
+    <h2 class="text-4xl md:text-5xl font-normal text-[#003366] mt-2">
+      Field Notes
     </h2>
   </div>
 
   <!-- RESPONSIVE GRID -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto relative z-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto relative z-10">
 
     <!-- Sticky Note 1 -->
-    <div class="sticky-note bg-[#fef3c7] p-6 text-gray-800 transform -rotate-2 relative">
-      <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/30 backdrop-blur-sm rotate-1 shadow-sm border border-white/20"></div>
+    <div class="sticky-note bg-[#f0f4f8] p-8 text-[#002244] transform -rotate-1 relative border border-[#cbd5e1]">
+      <!-- Pin -->
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#8B0000] shadow-md border border-[#5e0000]"></div>
       
-      <div class="font-serif text-lg leading-relaxed mb-4 mt-2">
+      <div class="font-serif text-xl leading-relaxed mb-6 mt-2 italic">
         "I was on a flight to IUCAA. No WiFi, couldn't load Overleaf.
         I finished my paper and slept for 6 hours."
       </div>
 
-      <div class="border-t border-black/10 pt-3">
-        <div class="font-mono text-xs text-gray-800 uppercase tracking-widest font-bold">
-          Madhu Sudan
-        </div>
-        <div class="font-mono text-[10px] text-gray-600 mt-1">
-          PhD Candidate, Astrophysics
+      <div class="border-t border-[#003366]/20 pt-4 flex items-center gap-3">
+        <div class="w-10 h-10 bg-[#e0f2fe] rounded-full flex items-center justify-center font-serif font-bold text-[#003366]">M</div>
+        <div>
+            <div class="font-serif text-sm font-bold text-[#002244] uppercase tracking-wide">
+            Madhu Sudan
+            </div>
+            <div class="font-serif text-xs text-[#003366] italic">
+            PhD Candidate, Astrophysics
+            </div>
         </div>
       </div>
     </div>
 
     <!-- Sticky Note 2 -->
-    <div class="sticky-note bg-[#dbeafe] p-6 text-gray-800 transform rotate-1 relative md:mt-6">
-      <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/30 backdrop-blur-sm -rotate-2 shadow-sm border border-white/20"></div>
+    <div class="sticky-note bg-[#f0f4f8] p-8 text-[#002244] transform rotate-2 relative md:mt-8 border border-[#cbd5e1]">
+        <!-- Pin -->
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#002244] shadow-md border border-[#001122]"></div>
 
-      <div class="font-serif text-lg leading-relaxed mb-4 mt-2">
+      <div class="font-serif text-xl leading-relaxed mb-6 mt-2 italic">
         "Feels like a Jupyter Notebook for LaTeX. The integrated terminal lets me
         install packages instantly. 90% covered by templates anyway."
       </div>
 
-      <div class="border-t border-black/10 pt-3">
-        <div class="font-mono text-xs text-gray-800 uppercase tracking-widest font-bold">
-          Ramit Khurana
-        </div>
-        <div class="font-mono text-[10px] text-gray-600 mt-1">
-          MSc. Astrophysics, LMU Munich
+      <div class="border-t border-[#003366]/20 pt-4 flex items-center gap-3">
+        <div class="w-10 h-10 bg-[#e0f2fe] rounded-full flex items-center justify-center font-serif font-bold text-[#002244]">R</div>
+        <div>
+            <div class="font-serif text-sm font-bold text-[#002244] uppercase tracking-wide">
+            Ramit Khurana
+            </div>
+            <div class="font-serif text-xs text-[#003366] italic">
+            MSc. Astrophysics, LMU Munich
+            </div>
         </div>
       </div>
     </div>
@@ -599,24 +674,24 @@
 </section>
 
             <!-- Note Section (Gap Reduced) -->
-            <div class="pt-12 pb-4 animate-fade-in delay-300 border-t border-gray-200">
-                <div class="text-center mb-6 md:mb-8">
-                    <span class="font-mono text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">\section{Note}</span>
-                    <h2 class="text-3xl md:text-4xl font-serif text-[#003366] mt-4">Creator's Note</h2>
-                    <p class="mt-4 text-gray-500 italic max-w-xl mx-auto font-serif px-4">
+            <div class="pt-16 pb-8 animate-fade-in delay-300">
+                <div class="text-center mb-8 md:mb-12 max-w-2xl mx-auto border-t-2 border-b-2 border-double border-[#003366]/30 py-8">
+                    <h2 class="text-3xl md:text-4xl font-normal text-[#003366] mb-4">Creator's Note</h2>
+                    <p class="text-[#002244] text-lg italic font-serif leading-relaxed">
                         TexWolf is independently developed. Contributions support server costs, continued development,
                         and my academic preparation for graduate research.
                         By using and supporting this tool, you help keep independent academic software alive.
                     </p>
 
                     <!-- Creator Contact Info -->
-                    <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-gray-600 font-serif">
-                        <a href="mailto:astrodingra@gmail.com" class="flex items-center gap-2 hover:text-[#003366] transition-colors group">
-                            <i data-lucide="mail" class="w-4 h-4 text-gray-400 group-hover:text-[#003366]"></i>
+                    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-[#002244] font-serif text-sm uppercase tracking-widest">
+                        <a href="mailto:astrodingra@gmail.com" class="flex items-center gap-2 hover:text-[#8B0000] transition-colors group">
+                            <i data-lucide="mail" class="w-4 h-4 text-[#003366] group-hover:text-[#8B0000]"></i>
                             <span>astrodingra@gmail.com</span>
                         </a>
-                        <a href="https://www.astrodingra.in" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-[#003366] transition-colors group">
-                            <i data-lucide="globe" class="w-4 h-4 text-gray-400 group-hover:text-[#003366]"></i>
+                        <span class="hidden sm:inline text-[#003366]">•</span>
+                        <a href="https://www.astrodingra.in" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-[#8B0000] transition-colors group">
+                            <i data-lucide="globe" class="w-4 h-4 text-[#003366] group-hover:text-[#8B0000]"></i>
                             <span>www.astrodingra.in</span>
                         </a>
                     </div>
@@ -624,82 +699,73 @@
             </div>
 
             <!-- PRICING / FUNDING SECTION (Gap Reduced) -->
-            <section id="pricing" class="pt-8 pb-20 border-t border-gray-200">
+            <section id="pricing" class="pt-8 pb-20">
 
-                <div class="text-center mb-10">
-                    <span class="font-mono text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">
-                        \section{Patronage}
-                    </span>
-                    <h2 class="text-3xl font-serif text-[#003366] mt-4">
+                <div class="text-center mb-16">
+                    <span class="font-serif italic text-[#8B0000] text-lg">Section IV.</span>
+                    <h2 class="text-4xl font-normal text-[#003366] mt-2 mb-4">
                         Academic Patronage
                     </h2>
-                    <p class="mt-4 text-gray-500 italic max-w-xl mx-auto font-serif px-4">
-                        TexWolf is free-to-use software built by a student.
-                        If this tool saved your deadline, consider supporting its development.
-                    </p>
-
+                    <div class="w-24 h-1 bg-[#002244] mx-auto double-border"></div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto px-2">
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto px-2">
 
                     <!-- FREE TIER -->
                     <div
-                        class="p-6 md:p-8 rounded-xl bg-white border border-gray-200 shadow-sm relative overflow-hidden group hover:border-[#003366]/30 transition-all flex flex-col">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        class="p-8 rounded-sm bg-[#f0f4f8] border-4 border-double border-[#003366]/30 relative overflow-hidden group hover:border-[#003366] transition-all flex flex-col">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
                             <i data-lucide="feather" class="w-24 h-24 text-[#003366]"></i>
                         </div>
-                        <h3 class="text-2xl font-serif italic">Local Scholar</h3>
-                        <div class="mt-4 mb-6 font-mono text-sm text-gray-500">
+                        <h3 class="text-3xl font-serif italic text-[#003366]">Local Scholar</h3>
+                        <div class="mt-4 mb-6 font-mono text-xs text-[#002244] uppercase tracking-widest">
                             \documentclass{community}
                         </div>
-                        <div class="mb-6">
-                            <span class="text-4xl font-serif font-bold currency-symbol">$</span>
-                            <span class="text-4xl font-serif font-bold">0</span>
+                        <div class="mb-8">
+                            <span class="text-5xl font-serif font-bold currency-symbol text-[#003366]">$</span>
+                            <span class="text-5xl font-serif font-bold text-[#003366]">0</span>
                         </div>
 
-                        <ul class="space-y-3 text-sm relative z-10 flex-grow">
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Unlimited local projects</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Full LaTeX engine (WASM)</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <strong>Unlimited</strong> Online Collaboration</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Integrated Chatbox & Sticky Notes</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Visual Editor </li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Terminal Package Manager</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Works Online & Offline</li>
-                            <li class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-blue-400"></i> AI Copilot (Coming Soon)</li>
+                        <ul class="space-y-4 text-base font-serif text-[#002244] relative z-10 flex-grow">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-[#002244]"></i> Unlimited local projects</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-[#002244]"></i> Full LaTeX engine (WASM)</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-[#002244]"></i> <strong>Unlimited</strong> Online Collaboration</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-[#002244]"></i> Integrated Chatbox & Sticky Notes</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-[#002244]"></i> Visual Editor </li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-[#002244]"></i> Terminal Package Manager</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-[#002244]"></i> Works Online & Offline</li>
+                            <li class="flex items-center gap-3"><i data-lucide="clock" class="w-5 h-5 text-[#8B0000]"></i> AI Copilot (Coming Soon)</li>
                         </ul>
 
                         <button onclick="window.scrollTo({top:0, behavior:'smooth'})"
-                            class="mt-8 w-full py-2.5 border border-gray-200 hover:bg-gray-50 text-slate-700 rounded-lg text-sm font-semibold transition-colors">
+                            class="mt-10 w-full py-3 border border-[#002244] hover:bg-[#002244] hover:text-[#FDFBF7] text-[#002244] rounded-sm text-sm font-bold uppercase tracking-widest transition-colors font-serif">
                             Start Writing Free
                         </button>
                     </div>
 
                     <!-- DEVELOPMENT FUND -->
                     <div
-                        class="p-6 md:p-8 rounded-xl bg-[#0B1220] text-white border border-blue-900 shadow-xl relative overflow-hidden flex flex-col">
+                        class="p-8 rounded-sm bg-[#002244] text-[#FDFBF7] border border-[#001122] shadow-2xl relative overflow-hidden flex flex-col">
                         <!-- Starfield Effect (CSS) -->
-                        <div class="absolute inset-0 z-0">
+                        <div class="absolute inset-0 z-0 opacity-30">
                             <div class="absolute top-10 left-10 w-1 h-1 bg-white rounded-full opacity-70 animate-pulse"></div>
-                            <div class="absolute top-20 right-20 w-1 h-1 bg-blue-200 rounded-full opacity-50"></div>
+                            <div class="absolute top-20 right-20 w-1 h-1 bg-[#e0f2fe] rounded-full opacity-50"></div>
                             <div class="absolute bottom-32 left-1/3 w-0.5 h-0.5 bg-white rounded-full opacity-60"></div>
-                            <div class="absolute bottom-10 right-10 w-1.5 h-1.5 bg-purple-200 rounded-full opacity-40 animate-pulse"></div>
+                            <div class="absolute bottom-10 right-10 w-1.5 h-1.5 bg-[#8B0000] rounded-full opacity-40 animate-pulse"></div>
                         </div>
-
-                        <!-- Subtle Glow Effect -->
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none z-0"></div>
 
                         <!-- Content -->
                         <div class="relative z-10">
                             <div class="flex justify-between items-start">
                                 <div>
-                                    <h3 class="text-2xl font-serif italic text-blue-50">Development Supporter</h3>
-                                    <div class="mt-2 mb-6 font-mono text-sm text-blue-300">
+                                    <h3 class="text-3xl font-serif italic text-[#e0f2fe]">Development Supporter</h3>
+                                    <div class="mt-4 mb-6 font-mono text-xs text-[#b0c4de] uppercase tracking-widest">
                                         \documentclass{patron}
                                     </div>
                                 </div>
                                 <!-- Currency Selector -->
                                 <select id="currency-select" onchange="manualCurrencyChange(this.value)"
-                                    class="bg-[#1a2333] border border-blue-800/50 text-xs text-blue-200 rounded px-2 py-1 outline-none focus:border-blue-500 cursor-pointer hover:bg-[#252f40] transition-colors max-w-[80px]">
+                                    class="bg-[#001122] border border-[#003366] text-xs text-[#e0f2fe] rounded-sm px-2 py-1 outline-none focus:border-[#b0c4de] cursor-pointer hover:bg-[#003366] transition-colors max-w-[80px] font-serif uppercase">
                                     <option value="USD">USD ($)</option>
                                     <option value="INR">INR (₹)</option>
                                     <option value="CAD">CAD (C$)</option>
@@ -710,78 +776,78 @@
                             </div>
 
                             <!-- PHASE INDICATOR -->
-                            <div class="bg-blue-900/40 border border-blue-500/30 rounded-lg p-3 mb-6 backdrop-blur-sm">
-                                <div class="flex justify-between items-center text-xs font-mono mb-1">
-                                    <span class="text-blue-200 uppercase tracking-widest">Current Phase</span>
-                                    <span class="text-emerald-400 flex items-center gap-1.5">
+                            <div class="bg-[#003366] border border-[#004488] rounded-sm p-4 mb-8">
+                                <div class="flex justify-between items-center text-xs font-mono mb-2">
+                                    <span class="text-[#b0c4de] uppercase tracking-widest">Current Phase</span>
+                                    <span class="text-[#FFD700] flex items-center gap-1.5 font-bold">
                                         <span class="relative flex h-2 w-2">
-                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFE44D] opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#FFD700]"></span>
                                         </span>
                                         Active
                                     </span>
                                 </div>
-                                <div class="flex justify-between items-end mb-2">
-                                    <div class="font-serif text-lg text-white leading-tight">Academic Preparation</div>
-                                    <div class="font-mono text-xs text-blue-200 text-right ml-2"><span class="text-emerald-400 font-bold">$1.33</span> <span class="text-blue-400">/</span> $1,000</div>
+                                <div class="flex justify-between items-end mb-3">
+                                    <div class="font-serif text-xl text-[#FDFBF7] leading-tight">Academic Preparation</div>
+                                    <div class="font-mono text-xs text-[#b0c4de] text-right ml-2"><span class="text-[#FFD700] font-bold">$1.33</span> <span class="text-[#8ba2be]">/</span> $1,000</div>
                                 </div>
-                                <div class="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden border border-white/5">
-                                    <div class="w-[1%] h-full bg-gradient-to-r from-emerald-500 to-green-400 shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
+                                <div class="w-full h-1 bg-[#001122] rounded-full overflow-hidden border border-[#002244]">
+                                    <div class="w-[1%] h-full bg-[#FFD700] shadow-[0_0_10px_rgba(255,215,0,0.3)]"></div>
                                 </div>
 
                                 <!-- Breakdown List -->
-                                <div class="mt-4 pt-3 border-t border-blue-500/20">
-                                    <p class="text-[10px] uppercase tracking-wider text-blue-400 mb-2 font-semibold">Funds Allocated To:</p>
-                                    <div class="grid grid-cols-2 gap-y-2 gap-x-1 text-[11px] text-blue-100/80 font-mono">
+                                <div class="mt-4 pt-4 border-t border-[#002244]">
+                                    <p class="text-[10px] uppercase tracking-wider text-[#8ba2be] mb-3 font-semibold">Funds Allocated To:</p>
+                                    <div class="grid grid-cols-2 gap-y-3 gap-x-1 text-xs text-[#b0c4de] font-serif">
                                         <div class="flex items-center gap-2">
-                                            <i data-lucide="file-check" class="w-3 h-3 text-emerald-400"></i>
+                                            <i data-lucide="file-check" class="w-3 h-3 text-[#FFD700]"></i>
                                             <span>Application Fees</span>
                                         </div>
                                         <div class="flex items-center gap-2">
-                                            <i data-lucide="graduation-cap" class="w-3 h-3 text-emerald-400"></i>
+                                            <i data-lucide="graduation-cap" class="w-3 h-3 text-[#FFD700]"></i>
                                             <span>IELTS/TOEFL Exams</span>
                                         </div>
                                         <div class="flex items-center gap-2">
-                                            <i data-lucide="book" class="w-3 h-3 text-emerald-400"></i>
+                                            <i data-lucide="book" class="w-3 h-3 text-[#FFD700]"></i>
                                             <span>Research Materials</span>
                                         </div>
                                         <div class="flex items-center gap-2">
-                                            <i data-lucide="server" class="w-3 h-3 text-emerald-400"></i>
+                                            <i data-lucide="server" class="w-3 h-3 text-[#FFD700]"></i>
                                             <span>Server Costs</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Future Phases Roadmap -->
-                                <div class="mt-3 pt-3 border-t border-blue-500/20">
+                                <div class="mt-4 pt-3 border-t border-[#002244]">
                                     <details class="group/roadmap">
-                                        <summary class="flex items-center gap-2 cursor-pointer text-xs text-blue-300 hover:text-white transition-colors select-none">
+                                        <summary class="flex items-center gap-2 cursor-pointer text-xs text-[#b0c4de] hover:text-[#FDFBF7] transition-colors select-none font-serif uppercase tracking-wider">
                                             <i data-lucide="map" class="w-3 h-3"></i>
-                                            <span class="uppercase tracking-wider font-semibold">View Roadmap & Future Phases</span>
+                                            <span>View Roadmap & Future Phases</span>
                                             <i data-lucide="chevron-down" class="w-3 h-3 group-open/roadmap:rotate-180 transition-transform ml-auto"></i>
                                         </summary>
 
-                                        <div class="mt-4 space-y-4 pl-1 relative border-l border-blue-800/50 ml-1.5 pb-2">
+                                        <div class="mt-4 space-y-4 pl-1 relative border-l border-[#002244] ml-1.5 pb-2">
                                             <!-- Phase 2 -->
                                             <div class="pl-4 relative opacity-70 hover:opacity-100 transition-opacity">
-                                                <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-[#0B1220] border border-blue-500"></div>
-                                                <h4 class="text-sm font-serif text-blue-100 flex items-center gap-2">
+                                                <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-[#001122] border border-[#FFD700]"></div>
+                                                <h4 class="text-sm font-serif text-[#FDFBF7] flex items-center gap-2">
                                                     Phase 2: Graduate Transition
-                                                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/50 text-blue-300 font-mono border border-blue-800">LOCKED</span>
+                                                    <span class="text-[9px] px-1.5 py-0.5 rounded-sm bg-[#002244] text-[#b0c4de] font-mono border border-[#004488]">LOCKED</span>
                                                 </h4>
-                                                <p class="text-[10px] text-blue-400 font-mono mt-0.5 uppercase tracking-wide">Triggers on University Acceptance</p>
-                                                <p class="text-[11px] text-blue-200/80 mt-1 leading-snug">Initial campus setup requirements and MSc. Astrophysics</p>
+                                                <p class="text-[10px] text-[#8ba2be] font-mono mt-0.5 uppercase tracking-wide">Triggers on University Acceptance</p>
+                                                <p class="text-[11px] text-[#b0c4de] mt-1 leading-snug">Initial campus setup requirements and MSc. Astrophysics</p>
                                             </div>
 
                                             <!-- Phase 3 -->
                                             <div class="pl-4 relative opacity-70 hover:opacity-100 transition-opacity">
-                                                <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-[#0B1220] border border-blue-500"></div>
-                                                <h4 class="text-sm font-serif text-blue-100 flex items-center gap-2">
+                                                <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-[#001122] border border-[#FFD700]"></div>
+                                                <h4 class="text-sm font-serif text-[#FDFBF7] flex items-center gap-2">
                                                     Phase 3: TexWolf
-                                                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/50 text-blue-300 font-mono border border-blue-800">LOCKED</span>
+                                                    <span class="text-[9px] px-1.5 py-0.5 rounded-sm bg-[#002244] text-[#b0c4de] font-mono border border-[#004488]">LOCKED</span>
                                                 </h4>
-                                                <p class="text-[10px] text-blue-400 font-mono mt-0.5 uppercase tracking-wide">Long Term Goal</p>
-                                                <p class="text-[11px] text-blue-200/80 mt-1 leading-snug">Funds to keep TexWolf alive and free.</p>
+                                                <p class="text-[10px] text-[#8ba2be] font-mono mt-0.5 uppercase tracking-wide">Long Term Goal</p>
+                                                <p class="text-[11px] text-[#b0c4de] mt-1 leading-snug">Funds to keep TexWolf alive and free.</p>
                                             </div>
                                         </div>
                                     </details>
@@ -789,43 +855,43 @@
                             </div>
 
                             <!-- Interactive Pricing Control -->
-                            <div class="mb-6 p-4 bg-white/5 rounded-lg border border-white/10 backdrop-blur-sm">
-                                <label class="block text-xs uppercase tracking-wider text-blue-300 mb-2 font-semibold">Contribution Amount</label>
+                            <div class="mb-8 p-6 bg-[#003366] rounded-sm border border-[#004488]">
+                                <label class="block text-xs uppercase tracking-widest text-[#b0c4de] mb-4 font-bold font-serif">Contribution Amount</label>
 
                                 <!-- Preset Buttons -->
-                                <div id="preset-container" class="flex flex-wrap gap-2 mb-4">
+                                <div id="preset-container" class="flex flex-wrap gap-2 mb-6">
                                     <!-- Buttons injected via JS -->
                                 </div>
 
-                                <div class="flex items-center gap-3 mb-4">
-                                    <span class="text-3xl font-serif font-bold currency-symbol text-white">$</span>
+                                <div class="flex items-center gap-3 mb-6 border-b border-[#004488] pb-2">
+                                    <span class="text-4xl font-serif font-bold currency-symbol text-[#FDFBF7]">$</span>
                                     <input type="number" id="custom-amount" value="25" min="5"
-                                        class="bg-transparent border-b border-blue-500/50 text-3xl font-serif font-bold text-white w-32 focus:outline-none focus:border-blue-400 p-0 transition-colors duration-200"
+                                        class="bg-transparent border-none text-4xl font-serif font-bold text-[#FDFBF7] w-32 focus:outline-none p-0 transition-colors duration-200"
                                         oninput="syncSlider(this.value)">
                                 </div>
 
                                 <input type="range" id="price-slider" min="5" max="250" value="25" step="5"
-                                    class="w-full h-2 bg-blue-900/50 rounded-lg appearance-none cursor-pointer accent-blue-400 hover:accent-blue-300 transition-all"
+                                    class="w-full"
                                     oninput="syncInput(this.value)">
 
-                                <div class="flex justify-between text-[10px] text-blue-400/60 font-mono mt-2">
+                                <div class="flex justify-between text-[10px] text-[#8ba2be] font-mono mt-3 uppercase">
                                     <span id="min-label" class="currency-symbol-small">$5</span>
                                     <span>SLIDING SCALE</span>
                                     <span id="max-label" class="currency-symbol-small">$250+</span>
                                 </div>
                             </div>
 
-                            <p class="text-sm text-blue-100 font-serif mb-6 leading-relaxed opacity-90">
-                                <span class="italic text-blue-300">"We are all in the gutter, but some of us are looking at the stars."</span>
+                            <p class="text-sm text-[#e0f2fe] font-serif mb-8 leading-relaxed opacity-90 italic text-center">
+                                "We are all in the gutter, but some of us are looking at the stars."
                             </p>
 
                             <!-- CTA -->
                             <button id="fund-btn" onclick="handleDonation()"
-                                class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-serif italic text-lg rounded-lg shadow-lg shadow-blue-900/20 transition-all transform active:scale-[0.98] flex justify-center items-center gap-2 group border border-white/10 disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed">
+                                class="w-full py-4 bg-[#8B0000] hover:bg-[#A52A2A] text-[#FDFBF7] font-serif uppercase tracking-widest text-sm font-bold rounded-sm shadow-lg transition-all border border-[#5e0000] flex justify-center items-center gap-2 group disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed">
                                 <span>Support Development</span>
-                                <i data-lucide="heart" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                                <i data-lucide="heart" class="w-4 h-4 group-hover:scale-110 transition-transform text-[#FDFBF7]"></i>
                             </button>
-                            <p class="text-[10px] text-center text-blue-400/60 font-mono mt-3">
+                            <p class="text-[10px] text-center text-[#8ba2be] font-mono mt-4 uppercase tracking-wider">
                                 Secure payment via Razorpay • Receipts provided
                             </p>
                         </div>
@@ -835,52 +901,51 @@
             </section>
 
              <!-- NEW SECTION: Bugs, Feedback, Updates -->
-             <section id="community" class="py-16 relative overflow-hidden bg-white/50 border-t border-gray-200">
+             <section id="community" class="py-16 relative overflow-hidden border-t-2 border-double border-[#003366]/30 bg-[#e0f2fe]/40">
                 <!-- Header -->
                 <div class="max-w-4xl mx-auto px-6 relative z-10">
-                    <div class="text-center mb-12">
-                        <span class="font-mono text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">\section{Community}</span>
-                        <h2 class="text-3xl md:text-4xl font-serif text-[#003366] mt-4">Shape the Future of TexWolf</h2>
-                        <p class="mt-4 text-gray-600 font-serif italic">Found a bug? Have a brilliant idea? Check the roadmap.</p>
+                    <div class="text-center mb-16">
+                        <span class="font-serif italic text-[#8B0000] text-lg">Section V.</span>
+                        <h2 class="text-4xl md:text-5xl font-normal text-[#003366] mt-2">Correspondence & Updates</h2>
                     </div>
             
-                    <div class="grid md:grid-cols-3 gap-6">
+                    <div class="grid md:grid-cols-3 gap-8">
                         <!-- Bug Report -->
-                        <a href="mailto:astrodingra@gmail.com?subject=[Bug]%20TexWolf%20Issue" class="group p-6 bg-white rounded-xl border border-red-100 hover:border-red-300 hover:shadow-md transition-all flex flex-col items-center text-center">
-                            <div class="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
+                        <a href="mailto:astrodingra@gmail.com?subject=[Bug]%20TexWolf%20Issue" class="group p-8 bg-[#f0f4f8] rounded-sm border border-[#003366]/30 hover:border-[#8B0000] hover:shadow-lg transition-all flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-[#8B0000]/10 text-[#8B0000] rounded-full flex items-center justify-center mb-4 group-hover:bg-[#8B0000] group-hover:text-[#FDFBF7] transition-colors">
                                 <i data-lucide="bug" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="font-serif text-lg font-bold text-gray-900">Report a Bug</h3>
-                            <p class="text-sm text-gray-500 mt-2">Something not compiling? Let me know and I'll squash it.</p>
-                            <span class="mt-4 text-xs font-bold text-red-600 uppercase tracking-wider group-hover:underline">Send Report &rarr;</span>
+                            <h3 class="font-serif text-xl font-bold text-[#003366]">Report a Bug</h3>
+                            <p class="text-sm text-[#002244] mt-2 font-serif italic">Something not compiling? Let me know and I'll squash it.</p>
+                            <span class="mt-4 text-xs font-bold text-[#8B0000] uppercase tracking-wider group-hover:underline">Send Report &rarr;</span>
                         </a>
             
                         <!-- Feature Request -->
-                        <a href="mailto:astrodingra@gmail.com?subject=[Feature]%20TexWolf%20Idea" class="group p-6 bg-white rounded-xl border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all flex flex-col items-center text-center">
-                            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
+                        <a href="mailto:astrodingra@gmail.com?subject=[Feature]%20TexWolf%20Idea" class="group p-8 bg-[#f0f4f8] rounded-sm border border-[#003366]/30 hover:border-[#002244] hover:shadow-lg transition-all flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-[#002244]/10 text-[#002244] rounded-full flex items-center justify-center mb-4 group-hover:bg-[#002244] group-hover:text-[#FDFBF7] transition-colors">
                                 <i data-lucide="lightbulb" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="font-serif text-lg font-bold text-gray-900">Request Feature</h3>
-                            <p class="text-sm text-gray-500 mt-2">Missing a specific package or tool? Suggest it here.</p>
-                            <span class="mt-4 text-xs font-bold text-blue-600 uppercase tracking-wider group-hover:underline">Share Idea &rarr;</span>
+                            <h3 class="font-serif text-xl font-bold text-[#003366]">Request Feature</h3>
+                            <p class="text-sm text-[#002244] mt-2 font-serif italic">Missing a specific package or tool? Suggest it here.</p>
+                            <span class="mt-4 text-xs font-bold text-[#002244] uppercase tracking-wider group-hover:underline">Share Idea &rarr;</span>
                         </a>
             
                         <!-- Roadmap -->
-                         <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 flex flex-col">
+                         <div class="p-8 bg-[#e0f2fe] rounded-sm border border-[#003366]/30 flex flex-col">
                             <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center">
+                                <div class="w-10 h-10 bg-[#003366]/20 text-[#8B0000] rounded-sm flex items-center justify-center">
                                     <i data-lucide="map" class="w-5 h-5"></i>
                                 </div>
-                                <h3 class="font-serif text-lg font-bold text-gray-900">Next Updates</h3>
+                                <h3 class="font-serif text-xl font-bold text-[#003366]">Next Updates</h3>
                             </div>
                             
-                            <ul class="text-sm text-gray-600 space-y-3 font-mono">
+                            <ul class="text-sm text-[#002244] space-y-4 font-mono">
                                 <li class="flex items-center gap-3">
                                     <span class="relative flex h-2 w-2">
-                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD700] opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#FFD700]"></span>
                                     </span>
-                                    <span>Windows/Linux Support <span class="text-xs text-gray-400 ml-1">(In Progress)</span></span>
+                                    <span class="uppercase tracking-wide text-xs">Linux Support <span class="text-[10px] text-[#003366] ml-1">(In Progress)</span></span>
                                 </li>
                                
                             </ul>
@@ -891,58 +956,59 @@
 
 
             <!-- FAQ Section -->
-            <div class="py-16 md:py-24 border-t border-gray-200">
+            <div class="py-16 md:py-24 border-t-2 border-double border-[#003366]/30">
                 <div class="max-w-3xl mx-auto">
                     <div class="text-center mb-12">
-                        <h2 class="text-2xl font-serif text-[#003366]">Appendix A: FAQ</h2>
+                        <h2 class="text-3xl font-serif text-[#003366]">Appendix A: FAQ</h2>
+                        <div class="w-12 h-1 bg-[#003366] mx-auto double-border mt-3"></div>
                     </div>
 
                     <div class="space-y-4">
-                        <details class="group bg-white rounded-lg border border-gray-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                            <summary class="flex items-center justify-between gap-1.5 text-slate-900 font-medium">
-                                <span class="font-serif text-lg">Where are my files actually stored?</span>
-                                <span class="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3 group-open:-rotate-180 transition-transform duration-300">
+                        <details class="group bg-[#f0f4f8] rounded-sm border border-[#003366]/30 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:border-[#003366] transition-colors">
+                            <summary class="flex items-center justify-between gap-1.5 text-[#003366] font-serif text-lg font-medium">
+                                <span>Where are my files actually stored?</span>
+                                <span class="shrink-0 rounded-full bg-[#e0f2fe] p-1.5 text-[#8B0000] sm:p-2 group-open:-rotate-180 transition-transform duration-300">
                                     <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </summary>
-                            <p class="mt-4 leading-relaxed text-gray-600 text-sm pl-2 border-l-2 border-blue-100">
-                                For the community edition, files are stored in your browser's <span class="font-mono text-xs bg-gray-100 px-1 border border-gray-200 rounded">IndexedDB</span>.
+                            <p class="mt-4 leading-relaxed text-[#002244] text-sm pl-4 border-l-2 border-[#8B0000] font-serif">
+                                For the community edition, files are stored in your browser's <span class="font-mono text-xs bg-[#e0f2fe] px-1 border border-[#003366]/30 rounded-sm">IndexedDB</span>.
                                 They never leave your device unless you push to Git.
                             </p>
                         </details>
 
-                         <details class="group bg-white rounded-lg border border-gray-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                            <summary class="flex items-center justify-between gap-1.5 text-slate-900 font-medium">
-                                <span class="font-serif text-lg">Does this really work offline?</span>
-                                <span class="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3 group-open:-rotate-180 transition-transform duration-300">
+                         <details class="group bg-[#f0f4f8] rounded-sm border border-[#003366]/30 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:border-[#003366] transition-colors">
+                            <summary class="flex items-center justify-between gap-1.5 text-[#003366] font-serif text-lg font-medium">
+                                <span>Does this really work offline?</span>
+                                <span class="shrink-0 rounded-full bg-[#e0f2fe] p-1.5 text-[#8B0000] sm:p-2 group-open:-rotate-180 transition-transform duration-300">
                                     <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </summary>
-                            <p class="mt-4 leading-relaxed text-gray-600 text-sm pl-2 border-l-2 border-blue-100">
+                            <p class="mt-4 leading-relaxed text-[#002244] text-sm pl-4 border-l-2 border-[#8B0000] font-serif">
                                 Yes. The LaTeX compiler is downloaded once (via WebAssembly) and runs entirely on your CPU. You can compile, edit, and export PDFs without any internet connection.
                             </p>
                         </details>
 
-                        <details class="group bg-white rounded-lg border border-gray-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                            <summary class="flex items-center justify-between gap-1.5 text-slate-900 font-medium">
-                                <span class="font-serif text-lg">Why support TexWolf?</span>
-                                <span class="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3 group-open:-rotate-180 transition-transform duration-300">
+                        <details class="group bg-[#f0f4f8] rounded-sm border border-[#003366]/30 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:border-[#003366] transition-colors">
+                            <summary class="flex items-center justify-between gap-1.5 text-[#003366] font-serif text-lg font-medium">
+                                <span>Why support TexWolf?</span>
+                                <span class="shrink-0 rounded-full bg-[#e0f2fe] p-1.5 text-[#8B0000] sm:p-2 group-open:-rotate-180 transition-transform duration-300">
                                     <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </summary>
-                            <p class="mt-4 leading-relaxed text-gray-600 text-sm pl-2 border-l-2 border-blue-100">
+                            <p class="mt-4 leading-relaxed text-[#002244] text-sm pl-4 border-l-2 border-[#8B0000] font-serif">
                                 Building TexWolf helps me sharpen the coding skills needed for modern computational astrophysics. Your patronage covers server costs, books, and the time required to maintain this tool.
                             </p>
                         </details>
 
-                        <details class="group bg-white rounded-lg border border-gray-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                            <summary class="flex items-center justify-between gap-1.5 text-slate-900 font-medium">
-                                <span class="font-serif text-lg">How many collaborators I can add in one project?</span>
-                                <span class="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3 group-open:-rotate-180 transition-transform duration-300">
+                        <details class="group bg-[#f0f4f8] rounded-sm border border-[#003366]/30 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:border-[#003366] transition-colors">
+                            <summary class="flex items-center justify-between gap-1.5 text-[#003366] font-serif text-lg font-medium">
+                                <span>How many collaborators I can add in one project?</span>
+                                <span class="shrink-0 rounded-full bg-[#e0f2fe] p-1.5 text-[#8B0000] sm:p-2 group-open:-rotate-180 transition-transform duration-300">
                                     <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </summary>
-                            <p class="mt-4 leading-relaxed text-gray-600 text-sm pl-2 border-l-2 border-blue-100">
+                            <p class="mt-4 leading-relaxed text-[#002244] text-sm pl-4 border-l-2 border-[#8B0000] font-serif">
                                 Unlimited & for free! It uses Peer-to-Peer (P2P) technology.
                             </p>
                         </details>
@@ -950,21 +1016,27 @@
                 </div>
             </div>
 
-            <footer class="py-6 text-center border-t border-gray-200 mt-12 bg-gray-50/50 rounded-xl">
-                <div class="flex items-center justify-center gap-2 mb-3 opacity-90">
-                    <span class="font-serif font-bold text-lg tracking-tight text-[#003366]">
+            <footer class="py-8 text-center border-t-2 border-double border-[#003366]/30 mt-12 bg-[#f0f4f8] rounded-sm">
+                <div class="flex items-center justify-center gap-2 mb-4 opacity-90">
+                    <span class="font-serif font-bold text-2xl tracking-tight text-[#002244] uppercase">
                         TexWolf
                     </span>
                 </div>
 
-                <p class="text-[12px] text-gray-400 font-serif italic">
+                <div class="mb-4">
+                    <button onclick="openTerms()" class="text-xs font-serif uppercase tracking-widest text-[#003366] hover:text-[#8B0000] hover:underline underline-offset-4 decoration-1">
+                        Terms of Charter & Privacy Covenant
+                    </button>
+                </div>
+
+                <p class="text-xs text-[#003366] font-serif italic tracking-wide">
                     Typeset locally with
-                    <i data-lucide="heart" class="inline w-2.5 h-2.5 mx-0.5"></i>
+                    <i data-lucide="heart" class="inline w-3 h-3 mx-1 text-[#8B0000]"></i>
                     &copy; 2026 TexWolf.
-                    <br>
+                    <br><br>
                     <a href="https://www.sitee.in" target="_blank" rel="noopener noreferrer"
-                        style="text-decoration: underline !important;">
-                        Made with Sitee.
+                        style="text-decoration: none !important; border-bottom: 1px solid #003366;" class="hover:text-[#8B0000] transition-colors">
+                        Crafted with Sitee.
                     </a>
                 </p>
             </footer>
@@ -972,6 +1044,76 @@
 
         </div>
     </main>
+
+    <!-- TERMS & CONDITIONS MODAL -->
+    <div id="terms-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-[#002244]/80 backdrop-blur-sm transition-opacity" onclick="closeTerms()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative bg-[#FDFBF7] w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-sm border-4 border-double border-[#8B0000] shadow-2xl p-8 md:p-12 custom-scrollbar animate-fade-in" style="background-image: url('https://www.transparenttextures.com/patterns/paper.png');">
+            
+            <button onclick="closeTerms()" class="absolute top-4 right-4 text-[#8B0000] hover:text-[#002244] transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="text-center mb-8 border-b-2 border-double border-[#003366]/40 pb-6">
+                <div class="w-12 h-12 bg-[#002244] text-[#FDFBF7] rounded-full flex items-center justify-center mx-auto mb-4 font-serif font-bold text-xl border border-[#8B0000]">T</div>
+                <h2 class="text-3xl font-serif text-[#003366] uppercase tracking-wide">Charter of Usage</h2>
+                <p class="text-sm font-serif italic text-[#002244] mt-2">Regarding the Governance of the TexWolf Compendium</p>
+            </div>
+
+            <div class="space-y-8 font-serif text-[#002244] leading-relaxed text-justify">
+                
+                <div>
+                    <h3 class="text-xl font-bold text-[#8B0000] mb-2 uppercase tracking-widest border-b border-[#003366]/20 pb-1">Preamble</h3>
+                    <p class="text-sm">
+                        Welcome, Scholar. By accessing the TexWolf platform ("The Compendium"), you agree to abide by this Charter. This tool is forged to aid scientific inquiry and is provided in the spirit of open academic exchange.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-[#8B0000] mb-2 uppercase tracking-widest border-b border-[#003366]/20 pb-1">Article I. The Grant of Usage</h3>
+                    <p class="text-sm">
+                        The creator ("The Artisan") hereby grants you a revocable, non-exclusive, non-transferable license to use this software for academic, personal, or professional typesetting. The Community Edition is provided free of charge, subject to fair usage policies.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-[#8B0000] mb-2 uppercase tracking-widest border-b border-[#003366]/20 pb-1">Article II. Data Sovereignty & Privacy</h3>
+                    <p class="text-sm mb-2">
+                        <strong>1. Local Storage:</strong> Your manuscripts, .tex files, and intellectual property reside within your browser's local storage (IndexedDB). They are not transmitted to any central server unless explicitly shared via Peer-to-Peer protocols.
+                    </p>
+                    <p class="text-sm">
+                        <strong>2. Registry:</strong> When joining the waitlist or downloading the installer, we collect minimal information (Email, Institution, IP Address) solely for the purpose of distribution security and notifying you of updates. This data is kept under seal and never sold to merchants or brokers.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-[#8B0000] mb-2 uppercase tracking-widest border-b border-[#003366]/20 pb-1">Article III. On Patronage</h3>
+                    <p class="text-sm">
+                        Contributions made via the "Patronage" section are voluntary gifts to support the development and server maintenance. They do not constitute a purchase of goods. Patrons hold the eternal gratitude of the Artisan but do not acquire equity or ownership of the Compendium.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-[#8B0000] mb-2 uppercase tracking-widest border-b border-[#003366]/20 pb-1">Article IV. Limitation of Liability</h3>
+                    <p class="text-sm">
+                        The Compendium is provided "AS IS", without warranty of any kind, express or implied. In no event shall the Artisan be liable for any claim, damages (including lost theses, missed deadlines, or burnt midnight oil), or other liability arising from the use of this software. Always maintain backups of your scholarly works.
+                    </p>
+                </div>
+
+                <div class="pt-6 border-t-2 border-double border-[#003366]/40 text-center">
+                    <p class="text-xs italic text-[#002244]">
+                        Signed and Sealed in Digital Ink,<br>
+                        <strong>Jashanpreet Singh Dingra</strong><br>
+                        Proprietor & Artisan
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script type="module">
@@ -1000,6 +1142,27 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('mobile-menu-open');
         }
+
+        // --- MODAL LOGIC (TERMS) ---
+        window.openTerms = function(e) {
+            if(e) e.preventDefault();
+            const modal = document.getElementById('terms-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        window.closeTerms = function() {
+            const modal = document.getElementById('terms-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeTerms();
+            }
+        });
 
         // --- FORM & DOWNLOAD LOGIC ---
        // --- FORM & DOWNLOAD LOGIC ---
@@ -1091,9 +1254,9 @@
             let btnHTML = '';
 
             if (os === 'mac') {
-                textElement.textContent = "Detected macOS";
+                textElement.textContent = "Platform: macOS";
                 btnHTML = `
-                    <button onclick="window.location.href='https://zenodo.org/records/18274953/files/texwolf-installer.pkg'" class="w-full py-4 bg-gray-900 hover:bg-black text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group">
+                    <button onclick="window.location.href='https://zenodo.org/records/18274953/files/texwolf-installer.pkg'" class="w-full py-4 bg-[#002244] hover:bg-[#003366] text-[#FDFBF7] rounded-sm shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group border border-[#001122]">
                         <!-- Apple Icon -->
                         <svg class="w-4 h-4 fill-current mb-0.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1105,41 +1268,47 @@
                 </g>
             </svg>
                         <div class="text-left">
-                            <div class="text-xs font-mono text-gray-400">Download for Mac</div>
+                            <div class="text-xs font-mono text-[#FDFBF7]/70 uppercase tracking-wider">Download Installer</div>
                             <div class="font-bold font-serif text-lg">TexWolf.pkg</div>
                         </div>
                     </button>
                 `;
             } else if (os === 'windows') {
-                textElement.textContent = "Detected Windows";
+                textElement.textContent = "Platform: Windows";
                 btnHTML = `
-                    <button onclick="window.location.href='#'" class="w-full py-4 bg-[#0078D7] hover:bg-[#0063B1] text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group">
+                    <button onclick="window.location.href='https://zenodo.org/records/18274953/files/TexWolf_Setup.exe'" class="w-full py-4 bg-[#8B0000] hover:bg-[#A52A2A] text-[#FDFBF7] rounded-sm shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group relative overflow-hidden border border-[#5e0000]">
+                        <!-- Shimmer on button -->
+                        <div class="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
+                        
                          <!-- Windows Icon -->
-                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4h-13.051M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
-                        <div class="text-left">
-                            <div class="text-xs font-mono text-blue-100">Releasing Soon for Windows</div>
-                            <div class="font-bold font-serif text-lg">TexWolf.exe</div>
+                        <svg class="w-6 h-6 fill-current relative z-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4h-13.051M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+                        <div class="text-left relative z-10">
+                            <div class="text-xs font-mono text-[#FDFBF7]/80 flex items-center gap-1 uppercase tracking-wider">
+                                Download Installer
+                                <span class="animate-pulse bg-[#FDFBF7] text-[#8B0000] px-1 rounded-sm text-[9px] font-bold">NEW</span>
+                            </div>
+                            <div class="font-bold font-serif text-lg">TexWolf_Setup.exe</div>
                         </div>
                     </button>
                 `;
             } else if (os === 'ios') {
-                textElement.textContent = "Detected iOS";
+                textElement.textContent = "Platform: iOS";
                 btnHTML = `
-                    <button onclick="window.location.href='#'" class="w-full py-4 bg-[#000000] hover:bg-gray-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group">
+                    <button onclick="window.location.href='#'" class="w-full py-4 bg-[#001122] hover:bg-[#002244] text-[#FDFBF7] rounded-sm shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group border border-[#000]">
                          <i data-lucide="app-window" class="w-6 h-6"></i>
                         <div class="text-left">
-                            <div class="text-xs font-mono text-gray-300">Open Web App</div>
+                            <div class="text-xs font-mono text-[#FDFBF7]/70 uppercase tracking-wider">Open Web App</div>
                             <div class="font-bold font-serif text-lg">Launch Editor</div>
                         </div>
                     </button>
                 `;
             } else {
-                textElement.textContent = "Detected Linux";
+                textElement.textContent = "Platform: Linux";
                 btnHTML = `
-                    <button onclick="window.location.href='#'" class="w-full py-4 bg-[#E95420] hover:bg-[#C74418] text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group">
+                    <button onclick="window.location.href='#'" class="w-full py-4 bg-[#003366] hover:bg-[#002244] text-[#FDFBF7] rounded-sm shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group border border-[#001122]">
                         <i data-lucide="terminal" class="w-6 h-6"></i>
                         <div class="text-left">
-                            <div class="text-xs font-mono text-orange-100">Releasing Soon for Linux</div>
+                            <div class="text-xs font-mono text-[#FDFBF7]/70 uppercase tracking-wider">Releasing Soon</div>
                             <div class="font-bold font-serif text-lg">TexWolf_x64.deb</div>
                         </div>
                     </button>
@@ -1220,15 +1389,15 @@
             const currentVal = parseFloat(val);
 
             if (isNaN(currentVal) || currentVal < min) {
-                amountInput.classList.remove('text-white', 'border-blue-500/50', 'focus:border-blue-400');
-                amountInput.classList.add('text-red-400', 'border-red-500/50', 'focus:border-red-400');
+                amountInput.classList.remove('text-[#FDFBF7]');
+                amountInput.classList.add('text-red-400');
                 fundBtn.disabled = true;
-                fundBtn.classList.remove('hover:from-blue-500', 'hover:to-indigo-500', 'transform', 'active:scale-[0.98]');
+                fundBtn.classList.add('opacity-50', 'grayscale');
             } else {
-                amountInput.classList.remove('text-red-400', 'border-red-500/50', 'focus:border-red-400');
-                amountInput.classList.add('text-white', 'border-blue-500/50', 'focus:border-blue-400');
+                amountInput.classList.remove('text-red-400');
+                amountInput.classList.add('text-[#FDFBF7]');
                 fundBtn.disabled = false;
-                fundBtn.classList.add('hover:from-blue-500', 'hover:to-indigo-500', 'transform', 'active:scale-[0.98]');
+                fundBtn.classList.remove('opacity-50', 'grayscale');
             }
         }
 
@@ -1238,7 +1407,7 @@
             container.innerHTML = '';
             config.presets.forEach(amount => {
                 const btn = document.createElement('button');
-                btn.className = "px-3 py-1 text-xs font-mono rounded border border-blue-500/30 bg-blue-500/10 text-blue-200 hover:bg-blue-500/20 hover:border-blue-400 transition-colors";
+                btn.className = "px-3 py-1 text-xs font-mono rounded-sm border border-[#004488] bg-[#001122] text-[#e0f2fe] hover:bg-[#002244] hover:text-[#FDFBF7] transition-colors uppercase";
                 btn.textContent = `${config.symbol}${amount}`;
                 btn.onclick = () => selectPreset(amount);
                 container.appendChild(btn);
