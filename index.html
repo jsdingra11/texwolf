@@ -298,31 +298,22 @@
 
 <body class="min-h-screen flex flex-col overflow-x-hidden">
 
-    <!-- Background Pattern - Using Navy Blue for grid -->
+    <!-- Background Pattern -->
     <div class="fixed inset-0 z-[-1] hero-mask pointer-events-none opacity-10" 
          style="background-image: linear-gradient(var(--sepia-border) 1px, transparent 1px), linear-gradient(90deg, var(--sepia-border) 1px, transparent 1px); background-size: 40px 40px;"></div>
 
     <!-- Notification Bar -->
     <div class="bg-[#f0f4f8] backdrop-blur-sm border-b border-[#003366]/20 text-[#003366] px-4 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-medium shadow-md relative z-50 overflow-hidden">
-        
-        <!-- Subtle Shimmer Animation on Bar -->
         <div class="absolute inset-0 -translate-x-full animate-[shimmer_4s_infinite] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none"></div>
-
         <div class="flex items-center gap-2 relative z-10">
-            <!-- Pulsing Dot -->
             <span class="flex h-2 w-2 relative">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-[#8B0000]"></span>
             </span>
-            
             <span class="font-serif font-bold text-[#003366] italic tracking-wide" data-i18n="notification">TexWolf is now available on Windows & Mac</span>
-            
-            <!-- Badge -->
             <span class="bg-[#003366] text-[#FDFBF7] text-[10px] px-1.5 py-0.5 rounded-sm font-serif border border-[#002244] shadow-sm animate-pulse hidden sm:inline-block" data-i18n="badge_new">LATEST EDITION</span>
         </div>
-        
         <span class="hidden sm:inline text-[#003366]/50 relative z-10 mx-2">♦</span>
-        
         <div class="flex items-center gap-2 opacity-80 relative z-10 font-serif italic text-[#334455]">
             <span data-i18n="forthcoming">Forthcoming on</span>
             <div class="flex items-center gap-3">
@@ -332,6 +323,12 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Institutional CTA Banner -->
+    <div class="bg-[#002244] text-[#FDFBF7] text-xs font-serif text-center py-2 border-b border-[#FDFBF7]/20 relative z-40">
+        <span class="opacity-90">Representing a University or Research Lab?</span>
+        <a href="#institutional" class="ml-2 font-bold uppercase tracking-wider underline underline-offset-2 hover:text-[#8B0000] transition-colors">Explore Campus Solutions &rarr;</a>
     </div>
 
     <!-- Navbar -->
@@ -352,6 +349,7 @@
             <div class="hidden md:flex items-center gap-6 md:gap-8 text-sm font-semibold tracking-wide text-[#002244] font-serif uppercase text-[11px]">
                 <a href="#features" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]" data-i18n="nav_features">Features</a>
                 <a href="#reviews" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]" data-i18n="nav_field_notes">Field Notes</a>
+                <a href="#institutional" class="hover:text-[#8B0000] transition-colors border-b border-transparent hover:border-[#8B0000]">Institutions</a>
                 <a href="#pricing" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]" data-i18n="nav_patronage">Patronage</a>
                 <a href="#community" class="hover:text-[#003366] transition-colors border-b border-transparent hover:border-[#003366]" data-i18n="nav_correspondence">Correspondence</a>
             </div>
@@ -386,6 +384,8 @@
 
         <a href="#features" onclick="toggleMobileMenu()"
             class="text-[#003366] py-4 w-full text-center hover:bg-[#f0f4f8] active:bg-[#e0e4e8] italic" data-i18n="nav_features">Features</a>
+        <a href="#institutional" onclick="toggleMobileMenu()"
+            class="text-[#003366] py-4 w-full text-center hover:bg-[#f0f4f8] active:bg-[#e0e4e8] italic">Institutions</a>
         <a href="#reviews" onclick="toggleMobileMenu()"
             class="text-[#003366] py-4 w-full text-center hover:bg-[#f0f4f8] active:bg-[#e0e4e8] italic" data-i18n="nav_field_notes">Field Notes</a>
         <a href="#pricing" onclick="toggleMobileMenu()"
@@ -486,8 +486,21 @@
                                             class="w-full px-4 py-3 sm:py-2.5 bg-[#FDFBF7] border border-[#003366] rounded-none text-base sm:text-lg font-serif focus:outline-none focus:bg-[#fff] focus:border-[#8B0000] focus:ring-0 transition-all placeholder-[#003366]/60 text-[#003366]">
                                     </div>
 
+                                    <!-- Institutional Micro-Section -->
+                                    <div class="mt-4 p-3 bg-[#e0f2fe]/50 border border-[#003366]/20 rounded-sm">
+                                        <div class="flex items-start gap-2">
+                                            <div class="mt-0.5 text-[#003366]">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                            </div>
+                                            <div>
+                                                <p class="text-[10px] font-bold text-[#003366] uppercase tracking-wide">University License?</p>
+                                                <a href="#institutional" class="text-xs text-[#003366] underline hover:text-[#8B0000] transition-colors font-serif italic">Request campus access for your lab &rarr;</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <button type="submit" id="submit-btn"
-                                        class="w-full py-3 mt-6 bg-[#002244] hover:bg-[#003366] text-[#FDFBF7] font-serif uppercase tracking-widest text-sm font-bold rounded-sm shadow-md transition-all border border-[#001122] flex justify-center items-center gap-2 hover:shadow-lg">
+                                        class="w-full py-3 mt-4 bg-[#002244] hover:bg-[#003366] text-[#FDFBF7] font-serif uppercase tracking-widest text-sm font-bold rounded-sm shadow-md transition-all border border-[#001122] flex justify-center items-center gap-2 hover:shadow-lg">
                                         <span data-i18n="btn_start">Commence Writing</span>
                                         <i data-lucide="pen-tool" class="w-4 h-4"></i>
                                     </button>
@@ -583,8 +596,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Terminal -->
+                    <!-- ... features ... -->
                     <div class="p-6 bg-[#002244] text-[#FDFBF7] rounded-sm shadow-xl flex flex-col justify-between group border border-[#001122] relative overflow-hidden">
                         <div class="absolute top-0 right-0 p-4 opacity-10">
                             <i data-lucide="terminal" class="w-24 h-24"></i>
@@ -661,10 +673,9 @@
 
                 </div>
             </section>
-<!-- REVIEWS SECTION (Sticky Note Style) -->
+<!-- REVIEWS SECTION -->
 <section id="reviews" class="py-16 md:py-24 bg-[#e0f2fe] -mx-4 sm:-mx-6 px-4 sm:px-6 relative border-y border-[#003366]">
   
-  <!-- Corkboard Texture Overlay -->
   <div class="absolute inset-0 opacity-40 pointer-events-none mix-blend-multiply"
        style="background-image: url('https://www.transparenttextures.com/patterns/cork-board.png');">
   </div>
@@ -676,56 +687,179 @@
     </h2>
   </div>
 
-  <!-- RESPONSIVE GRID -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto relative z-10">
-
-    <!-- Sticky Note 1 -->
     <div class="sticky-note bg-[#f0f4f8] p-8 text-[#002244] transform -rotate-1 relative border border-[#cbd5e1]">
-      <!-- Pin -->
       <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#8B0000] shadow-md border border-[#5e0000]"></div>
-      
       <div class="font-serif text-xl leading-relaxed mb-6 mt-2 italic" data-i18n="review_1">
         "I was on a flight to IUCAA. No WiFi, couldn't load Overleaf.
         I finished my paper and slept for 6 hours."
       </div>
-
       <div class="border-t border-[#003366]/20 pt-4 flex items-center gap-3">
         <div class="w-10 h-10 bg-[#e0f2fe] rounded-full flex items-center justify-center font-serif font-bold text-[#003366]">M</div>
         <div>
-            <div class="font-serif text-sm font-bold text-[#002244] uppercase tracking-wide">
-            Madhu Sudan
-            </div>
-            <div class="font-serif text-xs text-[#003366] italic">
-            PhD Candidate, Astrophysics
-            </div>
+            <div class="font-serif text-sm font-bold text-[#002244] uppercase tracking-wide">Madhu Sudan</div>
+            <div class="font-serif text-xs text-[#003366] italic">PhD Candidate, Astrophysics</div>
         </div>
       </div>
     </div>
 
-    <!-- Sticky Note 2 -->
     <div class="sticky-note bg-[#f0f4f8] p-8 text-[#002244] transform rotate-2 relative md:mt-8 border border-[#cbd5e1]">
-        <!-- Pin -->
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#002244] shadow-md border border-[#001122]"></div>
-
       <div class="font-serif text-xl leading-relaxed mb-6 mt-2 italic" data-i18n="review_2">
         "Feels like a Jupyter Notebook for LaTeX. The integrated terminal lets me
         install packages instantly. 90% covered by templates anyway."
       </div>
-
       <div class="border-t border-[#003366]/20 pt-4 flex items-center gap-3">
         <div class="w-10 h-10 bg-[#e0f2fe] rounded-full flex items-center justify-center font-serif font-bold text-[#002244]">R</div>
         <div>
-            <div class="font-serif text-sm font-bold text-[#002244] uppercase tracking-wide">
-            Ramit Khurana
-            </div>
-            <div class="font-serif text-xs text-[#003366] italic">
-            MSc. Astrophysics, LMU Munich
-            </div>
+            <div class="font-serif text-sm font-bold text-[#002244] uppercase tracking-wide">Ramit Khurana</div>
+            <div class="font-serif text-xs text-[#003366] italic">MSc. Astrophysics, LMU Munich</div>
         </div>
       </div>
     </div>
-
   </div>
+</section>
+
+<!-- NEW: Institutional Collaboration Section -->
+<section id="institutional" class="py-20 border-b-2 border-double border-[#003366]/30 bg-[#001122] text-[#FDFBF7] relative overflow-hidden -mx-4 sm:-mx-6 px-4 sm:px-6">
+    <!-- Background Accents -->
+    <div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+        <i data-lucide="building-2" class="w-96 h-96"></i>
+    </div>
+    
+    <div class="max-w-6xl mx-auto relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <span class="font-serif italic text-[#8B0000] text-lg">Section IV.</span>
+            <h2 class="text-4xl md:text-6xl font-normal mt-2 mb-6">Institutional Infrastructure</h2>
+            <p class="text-lg md:text-xl font-serif text-[#b0c4de] max-w-2xl mx-auto leading-relaxed">
+                Empower your faculty and students with a unified, privacy-first research environment.
+                <br>Currently supporting 15+ universities worldwide.
+            </p>
+            <div class="w-24 h-1 bg-[#8B0000] mx-auto mt-8"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16">
+            <!-- Left: Value Props & Models -->
+            <div class="space-y-12">
+                <!-- Value Grid -->
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-10 h-10 rounded-sm bg-[#003366] flex items-center justify-center border border-[#004488]">
+                            <i data-lucide="layout-template" class="w-5 h-5 text-[#FDFBF7]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg font-bold mb-1">Standardized Templates</h4>
+                            <p class="text-sm text-[#b0c4de] font-serif">Pre-loaded thesis & journal templates specific to your university's guidelines.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-10 h-10 rounded-sm bg-[#003366] flex items-center justify-center border border-[#004488]">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5 text-[#FDFBF7]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg font-bold mb-1">Research Analytics</h4>
+                            <p class="text-sm text-[#b0c4de] font-serif">Dashboards tracking publication output, active projects, and collaboration networks.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-10 h-10 rounded-sm bg-[#003366] flex items-center justify-center border border-[#004488]">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-[#FDFBF7]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg font-bold mb-1">Secure Deployment</h4>
+                            <p class="text-sm text-[#b0c4de] font-serif">On-premise or private cloud options ensuring research data never leaves campus.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-10 h-10 rounded-sm bg-[#003366] flex items-center justify-center border border-[#004488]">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-[#FDFBF7]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg font-bold mb-1">Workshops & Training</h4>
+                            <p class="text-sm text-[#b0c4de] font-serif">Annual LaTeX workshops and certification programs for new grad students.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Models -->
+                <div class="pt-8 border-t border-[#003366]">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-[#8B0000] mb-6">Collaboration Models</h3>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-sm border border-[#003366] hover:bg-[#002244] transition-colors">
+                            <h4 class="font-serif text-lg text-[#FDFBF7] mb-2">Academic Partner</h4>
+                            <p class="text-xs text-[#b0c4de] leading-relaxed">Campus-wide license for all students & faculty. Includes SSO.</p>
+                        </div>
+                        <div class="p-4 rounded-sm border border-[#003366] hover:bg-[#002244] transition-colors">
+                            <h4 class="font-serif text-lg text-[#FDFBF7] mb-2">Research Lab</h4>
+                            <p class="text-xs text-[#b0c4de] leading-relaxed">Tailored for specific departments (e.g. Physics, Math) with shared repositories.</p>
+                        </div>
+                        <div class="p-4 rounded-sm border border-[#003366] hover:bg-[#002244] transition-colors">
+                            <h4 class="font-serif text-lg text-[#FDFBF7] mb-2">Grant/Gov</h4>
+                            <p class="text-xs text-[#b0c4de] leading-relaxed">Compliance-focused deployments for grant-funded projects requiring strict data sovereignty.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Inquiry Form -->
+            <div class="bg-[#FDFBF7] p-8 rounded-sm text-[#002244] shadow-2xl relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-[#8B0000]"></div>
+                
+                <h3 class="font-serif text-2xl font-bold mb-2">Request Partnership Info</h3>
+                <p class="text-sm text-[#003366] mb-6 font-serif italic">Connect with our Academic Relations team.</p>
+
+                <form onsubmit="handleInstitutionalRequest(event)" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest mb-1">Contact Name</label>
+                            <input type="text" id="inst-name" required class="w-full px-3 py-2 bg-[#f0f4f8] border border-[#003366] rounded-sm focus:border-[#8B0000] focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest mb-1">Official Email</label>
+                            <input type="email" id="inst-email" placeholder=".edu / .ac.in" required class="w-full px-3 py-2 bg-[#f0f4f8] border border-[#003366] rounded-sm focus:border-[#8B0000] focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest mb-1">Institution / University</label>
+                        <input type="text" id="inst-uni" required class="w-full px-3 py-2 bg-[#f0f4f8] border border-[#003366] rounded-sm focus:border-[#8B0000] focus:outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest mb-1">Department</label>
+                            <input type="text" id="inst-dept" required class="w-full px-3 py-2 bg-[#f0f4f8] border border-[#003366] rounded-sm focus:border-[#8B0000] focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest mb-1">Expected Users</label>
+                            <select id="inst-users" class="w-full px-3 py-2 bg-[#f0f4f8] border border-[#003366] rounded-sm focus:border-[#8B0000] focus:outline-none">
+                                <option value="<50">Lab (< 50)</option>
+                                <option value="50-500">Department (50-500)</option>
+                                <option value="500+">Campus Wide (500+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="inst-btn" class="w-full py-3 bg-[#003366] text-[#FDFBF7] font-serif font-bold uppercase tracking-widest hover:bg-[#002244] transition-colors shadow-lg mt-4">
+                        Send Inquiry
+                    </button>
+                </form>
+
+                <div class="mt-6 pt-4 border-t border-[#003366]/10 text-center">
+                    <p class="text-xs text-[#003366]/70 mb-2">Direct Contact:</p>
+                    <a href="mailto:partnerships@texwolf.com" class="font-serif font-bold text-[#8B0000] hover:underline">partnerships@texwolf.com</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trust Footer -->
+        <div class="mt-16 pt-8 border-t border-[#003366] flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 text-xs font-mono uppercase tracking-widest text-[#b0c4de]">
+            <span class="flex items-center gap-2"><i data-lucide="lock" class="w-4 h-4"></i> GDPR Compliant</span>
+            <span class="flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> End-to-End Encryption</span>
+            <span class="flex items-center gap-2"><i data-lucide="server" class="w-4 h-4"></i> 99.9% Uptime SLA</span>
+        </div>
+    </div>
 </section>
 
             <!-- Note Section (Gap Reduced) -->
@@ -757,7 +891,7 @@
             <section id="pricing" class="pt-8 pb-20">
 
                 <div class="text-center mb-16">
-                    <span class="font-serif italic text-[#8B0000] text-lg">Section IV.</span>
+                    <span class="font-serif italic text-[#8B0000] text-lg">Section V.</span>
                     <h2 class="text-4xl font-normal text-[#003366] mt-2 mb-4" data-i18n="sec_patronage">
                         Academic Patronage
                     </h2>
@@ -960,7 +1094,7 @@
                 <!-- Header -->
                 <div class="max-w-4xl mx-auto px-6 relative z-10">
                     <div class="text-center mb-16">
-                        <span class="font-serif italic text-[#8B0000] text-lg">Section V.</span>
+                        <span class="font-serif italic text-[#8B0000] text-lg">Section VI.</span>
                         <h2 class="text-4xl md:text-5xl font-normal text-[#003366] mt-2" data-i18n="sec_updates">Correspondence & Updates</h2>
                     </div>
             
@@ -1012,6 +1146,7 @@
 
             <!-- FAQ Section -->
             <div class="py-16 md:py-24 border-t-2 border-double border-[#003366]/30">
+                <!-- ... existing FAQ code ... -->
                 <div class="max-w-3xl mx-auto">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl font-serif text-[#003366]">Appendix A: FAQ</h2>
@@ -1071,6 +1206,7 @@
             </div>
 
             <footer class="py-8 text-center border-t-2 border-double border-[#003366]/30 mt-12 bg-[#f0f4f8] rounded-sm">
+                <!-- ... existing footer ... -->
                 <div class="flex items-center justify-center gap-2 mb-4 opacity-90">
                     <span class="font-serif font-bold text-2xl tracking-tight text-[#002244] uppercase">
                         TexWolf
@@ -1100,6 +1236,7 @@
     </main>
 
     <!-- TERMS & CONDITIONS MODAL -->
+    <!-- ... existing modal ... -->
     <div id="terms-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-[#002244]/80 backdrop-blur-sm transition-opacity" onclick="closeTerms()"></div>
@@ -1192,6 +1329,7 @@
         const db = getFirestore(app);
 
         // --- TRANSLATION DATA ---
+        // ... translations ...
         const translations = {
             en: {
                 notification: "Gazette: TexWolf is now available on Windows & Mac",
@@ -1212,6 +1350,7 @@
                 form_sub: "Enter Credentials",
                 label_email: "Email Address",
                 label_inst: "Institute / Affiliation",
+                label_collab_desc: "Request Lab Deployment / Bulk License",
                 btn_start: "Commence Writing",
                 download_ready: "Ready to Install",
                 download_detecting: "Detecting Platform...",
@@ -1298,6 +1437,7 @@
                 form_sub: "Zugangsdaten eingeben",
                 label_email: "E-Mail-Adresse",
                 label_inst: "Institut / Zugehörigkeit",
+                label_collab_desc: "Laborlizenz anfordern / Massenlizenz",
                 btn_start: "Schreiben beginnen",
                 download_ready: "Bereit zur Installation",
                 download_detecting: "Plattform wird erkannt...",
@@ -1384,6 +1524,7 @@
                 form_sub: "Entrer les Identifiants",
                 label_email: "Adresse Email",
                 label_inst: "Institut / Affiliation",
+                label_collab_desc: "Demander une licence labo / en volume",
                 btn_start: "Commencer l'Écriture",
                 download_ready: "Prêt à Installer",
                 download_detecting: "Détection de la plateforme...",
@@ -1495,6 +1636,45 @@
             }
         });
 
+        // --- INSTITUTIONAL FORM HANDLER ---
+        window.handleInstitutionalRequest = async function(event) {
+            event.preventDefault();
+            const btn = document.getElementById('inst-btn');
+            const originalText = btn.textContent;
+            
+            btn.textContent = "Sending Request...";
+            btn.disabled = true;
+            btn.classList.add('opacity-70');
+
+            const data = {
+                contactName: document.getElementById('inst-name').value,
+                email: document.getElementById('inst-email').value,
+                institution: document.getElementById('inst-uni').value,
+                department: document.getElementById('inst-dept').value,
+                users: document.getElementById('inst-users').value,
+                timestamp: serverTimestamp(),
+                type: 'institutional_inquiry'
+            };
+
+            try {
+                await addDoc(collection(db, "institutional_leads"), data);
+                btn.textContent = "Request Sent Successfully";
+                btn.classList.remove('bg-[#003366]');
+                btn.classList.add('bg-green-700');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'bg-green-700');
+                    btn.classList.add('bg-[#003366]');
+                    event.target.reset();
+                }, 3000);
+            } catch (error) {
+                console.error("Error sending request:", error);
+                btn.textContent = "Error. Please email directly.";
+            }
+        }
+
         // --- FORM & DOWNLOAD LOGIC ---
        // --- FORM & DOWNLOAD LOGIC ---
         window.handleStartWriting = async function (event) {
@@ -1503,6 +1683,7 @@
             const btn = document.getElementById('submit-btn');
             const emailInput = document.getElementById('email-input');
             const instituteInput = document.getElementById('institute-input');
+            // const collabCheck = document.getElementById('collab-check'); // Removed old check
 
             const formContainer = document.getElementById('access-form-container');
             const downloadContainer = document.getElementById('download-container');
@@ -1539,16 +1720,11 @@
                     timestamp: serverTimestamp(),
                     userAgent: navigator.userAgent,
                     screenSize: `${window.innerWidth}x${window.innerHeight}`,
-                    ip: userIp // <--- The new field
+                    ip: userIp 
                 });
                 console.log("Lead captured successfully");
             } catch (error) {
                 console.error("Error saving lead: ", error);
-                // Optional: You might want to alert the user here if saving fails completely
-                // alert("Connection error. Please try again.");
-                // btn.innerHTML = originalContent;
-                // btn.disabled = false;
-                // return; 
             }
 
             // --- 3. UI TRANSITION ---
