@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TexWolf | Admin Console</title>
+    
+    <!-- Tailwind & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Fonts (Matching Main Site) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
+
+    <script>
+        // -----------------------------
+        // Virtual Project File System
+        // -----------------------------
+        let projectFiles = {
+            "main.tex": ""
+        };
+        let activeFile = "main.tex";
+        let projectId = null;
+
+        // --- TAILWIND CONFIG TO MATCH MAIN SITE THEME ---
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Crimson Pro"', 'serif'], // Main site uses Serif for body
+                        display: ['"IM Fell English"', 'serif'], // Headings
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        ios: {
+                            // Remapping existing classes to New Theme
+                            blue: '#003366',      // Navy Blue
+                            blueDark: '#002244',  // Darker Navy
+                            hover: '#002244',
+                            
+                            bg: '#FDFBF7',        // Paper Off-White
+                            bgDark: '#0B1221',    // Deep Space Blue for Dark Mode
+                            
+                            card: '#FDFBF7',
+                            cardDark: '#161e2e',
+                            
+                            text: '#002244',      // Ink Blue text
+                            textDark: '#f5f5f7',
+                            
+                            subtext: '#556677',
+                            subtextDark: '#98989d',
+                            
+                            border: '#003366',    // Navy Borders
+                            borderDark: '#38383a',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px rgba(0, 34, 68, 0.08)',
+                        'float': '0 20px 40px rgba(0, 34, 68, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --paper-bg: #FDFBF7;
+            --ink-black: #003366;
+            --academic-blue: #002244;
+            --oxblood-red: #8B0000;
+            --sepia-border: #003366;
+            
+            /* Editor Vars */
+            --primary-color: #003366;
+            --editor-lh: 24px;
+            --editor-fs: 14px;
+            --editor-pd: 16px;
+            --gutter-width: 48px;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background-color: var(--paper-bg);
+            color: var(--ink-black);
+            /* Subtle paper texture overlay */
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        /* Login Overlay Style */
+        #login-overlay {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            background-color: var(--academic-blue);
+        }
+
+        /* Glass Panels adapted for Paper Theme */
+        .glass-panel, .glass-sidebar, .glass-header {
+            background: rgba(253, 251, 247, 0.95); /* Paper color with transparency */
+            backdrop-filter: blur(10px);
+            border-bottom: 3px double rgba(0, 51, 102, 0.15);
+        }
+
+        .dark .glass-sidebar, .dark .glass-header {
+            background: rgba(11, 18, 33, 0.9);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        /* Typography overrides for specific UI elements */
+        h1, h2, h3, .font-display {
+            font-family: 'IM Fell English', serif;
+        }
+
+        button, input, select, .nav-btn {
+            font-family: 'Crimson Pro', serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* Editor specific styles - Keep Monospace */
+        .editor-container, textarea, #highlightLayer {
+            font-family: 'JetBrains Mono', 'Consolas', monospace !important;
+        }
+
+        /* Navigation Tabs */
+        .nav-btn.active { 
+            background-color: #e0f2fe; 
+            color: #003366; 
+            border: 1px solid #003366;
+            font-weight: bold;
+        }
+
+        /* Editor Gutter */
+        .editor-gutter {
+            background: #f0f4f8; /* Light blue-grey for gutter */
+            color: #556677;
+            border-right: 1px solid rgba(0, 51, 102, 0.1);
+        }
+        
+        .dark .editor-gutter {
+            background: #0f1523;
+            color: #64748b;
+            border-right: 1px solid #1e293b;
+        }
+
+        /* Scrollbars */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #003366; border-radius: 3px; opacity: 0.5; }
+
+        /* --- Existing Functional Styles (Preserved) --- */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Neon Highlight for Find/Replace */
+        .neon-word { background-color: rgba(255, 215, 0, 0.3); border: 1px solid #daa520; border-radius: 2px; }
+        .neon-word.active { background-color: rgba(255, 215, 0, 0.6); box-shadow: 0 0 5px #daa520; }
+
+        /* Diff Viewer */
+        .diff-added { background-color: #e6ffec; }
+        .diff-removed { background-color: #ffebe9; }
+        
+        /* Terminal */
+        #terminalPanel { font-family: 'JetBrains Mono', monospace; }
+
+        /* Custom "Paper" UI Elements */
+        .paper-card {
+            background: #FDFBF7;
+            border: 1px solid #003366;
+            box-shadow: 4px 4px 0px rgba(0, 51, 102, 0.1);
+        }
+        
+        .paper-btn {
+            background: #003366;
+            color: #FDFBF7;
+            font-family: 'Crimson Pro', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            border: 1px solid #002244;
+        }
+        .paper-btn:hover {
+            background: #002244;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+    </style>
+</head>
+
+<body class="min-h-screen text-ios-text dark:text-gray-300">
+
+    <!-- LOGIN OVERLAY -->
+    <div id="login-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="w-full max-w-md bg-[#FDFBF7] rounded-sm shadow-2xl p-8 text-center border-4 border-double border-[#003366]">
+            <div class="w-16 h-16 bg-[#003366] text-[#FDFBF7] rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-[#8B0000] shadow-md">
+                <span class="font-display italic font-bold text-3xl">T</span>
+            </div>
+            <h2 class="text-3xl font-display text-[#003366] mb-2 tracking-tight">TexWolf Admin</h2>
+            <p class="text-[#002244] text-sm mb-8 font-serif italic opacity-80">Restricted Access // Authorized Personnel Only</p>
+            
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <input type="password" id="admin-pin" placeholder="ENTER ACCESS PIN" 
+                    class="w-full px-4 py-3 bg-[#f0f4f8] border border-[#003366] rounded-sm focus:outline-none focus:border-[#8B0000] text-center font-mono text-lg tracking-[0.2em] text-[#003366] placeholder-[#003366]/40 transition-colors">
+                <button type="submit" 
+                    class="w-full py-3 paper-btn rounded-sm transition-all shadow-md">
+                    Unlock Console
+                </button>
+            </form>
+            <p id="login-error" class="text-[#8B0000] font-bold font-serif text-sm mt-4 hidden"><i class="fa-solid fa-triangle-exclamation"></i> Incorrect Credentials.</p>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD (Hidden by default) -->
+    <div id="dashboard" class="hidden h-screen flex flex-col">
+        
+        <!-- Top Nav -->
+        <nav class="glass-header px-6 py-3 flex flex-col md:flex-row md:items-center justify-between sticky top-0 z-40 gap-4 border-b border-[#003366]/20">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#003366] rounded-sm border border-[#002244] flex items-center justify-center text-[#FDFBF7] shadow-sm shrink-0">
+                    <span class="font-display italic font-bold text-xl">T</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display text-xl font-bold text-[#003366] leading-none uppercase tracking-wide">TexWolf</span>
+                    <span class="text-[#8B0000] font-serif text-[10px] font-bold uppercase tracking-widest leading-none">Console v2.1</span>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="flex bg-[#e0f2fe]/50 p-1 rounded-sm border border-[#003366]/10 overflow-x-auto">
+                <button onclick="switchTab('leads')" id="tab-leads" class="nav-btn active px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-sm transition-all flex items-center gap-2 whitespace-nowrap">
+                    <i data-lucide="users" class="w-4 h-4"></i> Individual Leads
+                </button>
+                <button onclick="switchTab('institutional')" id="tab-institutional" class="nav-btn px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-sm transition-all flex items-center gap-2 whitespace-nowrap">
+                    <i data-lucide="building-2" class="w-4 h-4"></i> Institutional
+                </button>
+                <button onclick="switchTab('notifications')" id="tab-notifications" class="nav-btn px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-sm transition-all flex items-center gap-2 whitespace-nowrap">
+                    <i data-lucide="bell-ring" class="w-4 h-4"></i> Global Push
+                </button>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="location.reload()" class="p-2 text-[#003366] hover:text-[#8B0000] transition-colors border border-transparent hover:border-[#8B0000]/20 rounded-sm" title="Logout">
+                    <i data-lucide="log-out" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <main class="flex-1 overflow-y-auto p-4 sm:p-8 custom-scrollbar">
+            
+            <!-- VIEW 1: LEADS DASHBOARD -->
+            <div id="view-leads" class="tab-content active max-w-7xl mx-auto">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="paper-card p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-users text-6xl text-[#003366]"></i></div>
+                        <h3 class="text-xs font-bold text-[#8B0000] uppercase tracking-widest mb-1">Total Scholars</h3>
+                        <div class="text-4xl font-display text-[#003366]" id="total-count">...</div>
+                    </div>
+
+                    <div class="paper-card p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-laptop text-6xl text-[#003366]"></i></div>
+                        <h3 class="text-xs font-bold text-[#8B0000] uppercase tracking-widest mb-1">Top Platform</h3>
+                        <div class="text-4xl font-display text-[#003366]" id="top-os">...</div>
+                    </div>
+
+                    <div class="paper-card p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-clock text-6xl text-[#003366]"></i></div>
+                        <h3 class="text-xs font-bold text-[#8B0000] uppercase tracking-widest mb-1">Latest Entry</h3>
+                        <div class="text-2xl font-display text-[#003366] mt-2" id="last-active">...</div>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="paper-card overflow-hidden">
+                    <div class="px-6 py-4 border-b border-[#003366]/20 bg-[#f0f4f8] flex items-center justify-between">
+                        <h3 class="font-display font-bold text-lg text-[#003366]">Waitlist Registry</h3>
+                        <div class="flex items-center gap-2">
+                            <button onclick="exportToCSV('leads')" class="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-[#FDFBF7] bg-[#003366] hover:bg-[#002244] rounded-sm transition-colors uppercase tracking-wider">
+                                <i data-lucide="download" class="w-3 h-3"></i> CSV Export
+                            </button>
+                            <input type="text" id="search-input" onkeyup="filterTable()" placeholder="Search Registry..." 
+                                class="px-3 py-1.5 text-sm border border-[#003366]/30 bg-[#FDFBF7] rounded-sm focus:outline-none focus:border-[#8B0000] text-[#003366] placeholder-[#003366]/50">
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-[#e0f2fe] text-xs font-bold uppercase tracking-wider text-[#003366] border-b border-[#003366]">
+                                    <th class="px-6 py-3 font-serif">Timestamp</th>
+                                    <th class="px-6 py-3 font-serif">Email Address</th>
+                                    <th class="px-6 py-3 font-serif">Institute</th>
+                                    <th class="px-6 py-3 font-serif">OS / Device</th>
+                                    <th class="px-6 py-3 font-serif">Screen</th>
+                                    <th class="px-6 py-3 font-serif">IP Address</th>
+                                    <th class="px-6 py-3 text-right font-serif">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leads-table-body" class="divide-y divide-[#003366]/10 text-sm font-serif text-[#002244]">
+                                <tr>
+                                    <td colspan="7" class="px-6 py-8 text-center text-[#556677]">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <i class="fa-solid fa-circle-notch fa-spin"></i> Loading entries...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="px-6 py-3 border-t border-[#003366]/20 bg-[#f0f4f8] text-xs text-[#556677] flex justify-between items-center font-mono">
+                        <span id="showing-text">Showing all entries</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: INSTITUTIONAL DASHBOARD -->
+            <div id="view-institutional" class="tab-content max-w-7xl mx-auto">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="paper-card p-6 border-l-4 border-l-[#8B0000]">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xs font-bold text-[#8B0000] uppercase tracking-widest">Total Requests</h3>
+                            <i data-lucide="building-2" class="w-5 h-5 text-[#003366]"></i>
+                        </div>
+                        <div class="text-4xl font-display text-[#003366]" id="inst-total-count">...</div>
+                    </div>
+
+                    <div class="paper-card p-6 border-l-4 border-l-green-600">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xs font-bold text-green-700 uppercase tracking-widest">Campus Licenses</h3>
+                            <i data-lucide="globe" class="w-5 h-5 text-green-700"></i>
+                        </div>
+                        <div class="text-4xl font-display text-[#003366]" id="inst-large-count">...</div>
+                    </div>
+
+                    <div class="paper-card p-6 border-l-4 border-l-blue-500">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xs font-bold text-blue-700 uppercase tracking-widest">Recent Activity</h3>
+                            <i data-lucide="clock" class="w-5 h-5 text-blue-700"></i>
+                        </div>
+                        <div class="text-xl font-display text-[#003366] mt-2" id="inst-last-active">...</div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="paper-card overflow-hidden">
+                    <div class="px-6 py-4 border-b border-[#003366]/20 bg-[#f0f4f8] flex items-center justify-between">
+                        <h3 class="font-display font-bold text-lg text-[#003366]">Partnership Inquiries</h3>
+                        <div class="flex items-center gap-2">
+                            <button onclick="exportToCSV('institutional')" class="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-[#FDFBF7] bg-[#003366] hover:bg-[#002244] rounded-sm transition-colors uppercase tracking-wider">
+                                <i data-lucide="download" class="w-3 h-3"></i> CSV Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-[#e0f2fe] text-xs font-bold uppercase tracking-wider text-[#003366] border-b border-[#003366]">
+                                    <th class="px-6 py-3 font-serif">Timestamp</th>
+                                    <th class="px-6 py-3 font-serif">Institution</th>
+                                    <th class="px-6 py-3 font-serif">Contact Person</th>
+                                    <th class="px-6 py-3 font-serif">Department</th>
+                                    <th class="px-6 py-3 font-serif">Expected Users</th>
+                                    <th class="px-6 py-3 text-right font-serif">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inst-table-body" class="divide-y divide-[#003366]/10 text-sm font-serif text-[#002244]">
+                                <tr>
+                                    <td colspan="6" class="px-6 py-8 text-center text-[#556677]">
+                                        Loading institutional requests...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: NOTIFICATIONS DASHBOARD -->
+            <div id="view-notifications" class="tab-content max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Left Column: Controls -->
+                    <div class="lg:col-span-1 space-y-6">
+                        
+                        <!-- Live Status Card -->
+                        <div id="liveStatusCard" class="paper-card p-6 relative overflow-hidden transition-all">
+                            <div class="absolute top-4 right-4 flex items-center">
+                                <span class="relative flex h-3 w-3">
+                                  <span id="livePulse" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8B0000] opacity-75 hidden"></span>
+                                  <span id="liveDot" class="relative inline-flex rounded-full h-3 w-3 bg-gray-300"></span>
+                                </span>
+                            </div>
+                            <h3 class="text-xs font-bold text-[#003366] uppercase tracking-widest mb-3">Live on Site</h3>
+                            <div id="liveContent">
+                                <p id="liveTitle" class="font-display font-bold text-xl text-[#002244]">No Active Notification</p>
+                                <p id="liveMessage" class="text-sm text-[#556677] mt-1 font-serif italic">Users are not seeing any popups.</p>
+                            </div>
+                            
+                            <div id="liveActions" class="mt-4 pt-4 border-t border-[#003366]/10 hidden">
+                                <!-- Buttons will be injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Editor Form -->
+                        <div class="paper-card p-6">
+                            <h3 class="font-display font-bold text-lg text-[#003366] mb-4 flex items-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i> Compose Push Message
+                            </h3>
+                            
+                            <form id="notifyForm" onsubmit="handleNotifySubmit(event)" class="space-y-4">
+                                <input type="hidden" id="editKey" value="">
+                                
+                                <div>
+                                    <label class="block text-xs font-bold uppercase text-[#003366] tracking-wider mb-1">Title</label>
+                                    <input type="text" id="inputTitle" required 
+                                        class="w-full bg-[#f0f4f8] border border-[#003366]/30 rounded-sm p-2.5 text-sm font-serif text-[#002244] focus:border-[#003366] focus:ring-0 outline-none transition-all placeholder-[#003366]/30" 
+                                        placeholder="e.g. Server Maintenance">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold uppercase text-[#003366] tracking-wider mb-1">Message</label>
+                                    <textarea id="inputMessage" required 
+                                        class="w-full bg-[#f0f4f8] border border-[#003366]/30 rounded-sm p-2.5 text-sm font-serif text-[#002244] h-24 focus:border-[#003366] focus:ring-0 outline-none transition-all resize-none placeholder-[#003366]/30" 
+                                        placeholder="Enter the notification body text..."></textarea>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold uppercase text-[#003366] tracking-wider mb-1">Link URL</label>
+                                        <input type="text" id="inputLink" 
+                                            class="w-full bg-[#f0f4f8] border border-[#003366]/30 rounded-sm p-2.5 text-sm font-serif text-[#002244] focus:border-[#003366] focus:ring-0 outline-none" 
+                                            placeholder="https://...">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold uppercase text-[#003366] tracking-wider mb-1">Button Text</label>
+                                        <input type="text" id="inputBtn" 
+                                            class="w-full bg-[#f0f4f8] border border-[#003366]/30 rounded-sm p-2.5 text-sm font-serif text-[#002244] focus:border-[#003366] focus:ring-0 outline-none" 
+                                            value="Read More">
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 flex gap-2">
+                                    <button type="submit" id="submitBtn" 
+                                        class="flex-1 bg-[#8B0000] hover:bg-[#5e0000] text-[#FDFBF7] font-bold uppercase tracking-wider py-3 rounded-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-xs">
+                                        <i data-lucide="radio-tower" class="w-4 h-4"></i> Broadcast
+                                    </button>
+                                    <button type="button" onclick="resetNotifyForm()" 
+                                        class="px-4 py-3 bg-[#e0f2fe] hover:bg-[#bae6fd] rounded-sm text-[#003366] font-bold uppercase tracking-wider transition-colors text-xs">
+                                        Clear
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: History -->
+                    <div class="lg:col-span-2">
+                        <div class="paper-card h-[calc(100vh-200px)] min-h-[500px] flex flex-col overflow-hidden">
+                            <div class="p-4 border-b border-[#003366]/20 bg-[#f0f4f8] flex justify-between items-center shrink-0">
+                                <h3 class="font-display font-bold text-lg text-[#003366] flex items-center gap-2">
+                                    <i data-lucide="history" class="w-4 h-4"></i> Broadcast History
+                                </h3>
+                                <div class="flex items-center gap-3">
+                                    <button onclick="deleteAllLogs()" class="text-xs text-[#8B0000] hover:text-red-700 flex items-center gap-1 hover:bg-red-50 px-2 py-1 rounded transition-colors font-bold uppercase tracking-wide" title="Delete All History">
+                                        <i data-lucide="trash-2" class="w-3 h-3"></i> Clear Log
+                                    </button>
+                                    <span id="historyCount" class="bg-[#003366] text-[#FDFBF7] text-xs px-2 py-0.5 rounded-full font-mono">0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex-1 overflow-y-auto p-4 custom-scrollbar bg-[#FDFBF7]">
+                                <div id="historyList" class="space-y-3">
+                                    <div class="text-center text-[#556677] py-10 font-serif italic">Loading history...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Firebase & Logic -->
+    <script type="module">
+        // Import both Firestore (for Leads) and Realtime Database (for Notifications)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, query, orderBy, getDocs, deleteDoc, doc as firestoreDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getDatabase, ref, set, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // --- 1. CONFIGURATION ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyB4eoofAdY4DrW-VKvfGJl5aNv2hoCTn4c",
+            authDomain: "iist-fd6e8.firebaseapp.com",
+            databaseURL: "https://iist-fd6e8-default-rtdb.firebaseio.com",
+            projectId: "iist-fd6e8",
+            storageBucket: "iist-fd6e8.firebasestorage.app",
+            messagingSenderId: "692699808449",
+            appId: "1:692699808449:web:120c8941a940d071f24a40",
+            measurementId: "G-GPFG8LWF2H"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app); // Firestore for Leads
+        const dbRT = getDatabase(app); // Realtime DB for Notifications
+        
+        // State
+        let allLeads = [];
+        let allInstitutionalLeads = [];
+
+        // --- 2. AUTHENTICATION & UI LOGIC ---
+        window.handleLogin = function(e) {
+            e.preventDefault();
+            const pin = document.getElementById('admin-pin').value;
+            if (pin === '1234') {
+                document.getElementById('login-overlay').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                
+                // Initialize Data
+                fetchLeads();
+                fetchInstitutionalLeads(); // Fetch new data
+                initNotifications();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        window.switchTab = function(tabName) {
+            // Hide all
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+            
+            // Show target
+            document.getElementById(`view-${tabName}`).classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+        }
+
+        // --- 3. LEADS LOGIC (Firestore) ---
+        function getOS(userAgent) {
+            if (!userAgent) return 'Unknown';
+            let os = "Unknown OS";
+            if (userAgent.indexOf("Win") != -1) os = "Windows";
+            if (userAgent.indexOf("Mac") != -1) os = "MacOS";
+            if (userAgent.indexOf("X11") != -1) os = "UNIX";
+            if (userAgent.indexOf("Linux") != -1) os = "Linux";
+            if (userAgent.indexOf("Android") != -1) os = "Android";
+            if (userAgent.indexOf("like Mac") != -1) os = "iOS";
+            return os;
+        }
+
+        async function fetchLeads() {
+            const tableBody = document.getElementById('leads-table-body');
+            try {
+                const q = query(collection(db, "leads"), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                allLeads = [];
+                let osCounts = {};
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const os = getOS(data.userAgent);
+                    osCounts[os] = (osCounts[os] || 0) + 1;
+
+                    allLeads.push({
+                        id: doc.id,
+                        email: data.email || 'No Email',
+                        institute: data.institute || 'No Institute',
+                        timestamp: data.timestamp ? data.timestamp.toDate() : new Date(),
+                        os: os,
+                        screen: data.screenSize || 'N/A',
+                        ip: data.ip || 'Not Captured'
+                    });
+                });
+
+                updateStats(allLeads.length, osCounts, allLeads[0]?.timestamp);
+                renderTable(allLeads);
+
+            } catch (error) {
+                console.error("Error fetching leads:", error);
+                tableBody.innerHTML = `<tr><td colspan="7" class="px-6 py-4 text-center text-[#8B0000]">Error loading data. Check console.</td></tr>`;
+            }
+        }
+
+        function renderTable(data) {
+            const tableBody = document.getElementById('leads-table-body');
+            if (data.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="7" class="px-6 py-8 text-center text-[#556677]">No entries found.</td></tr>`;
+                return;
+            }
+
+            let html = '';
+            data.forEach(lead => {
+                const dateStr = lead.timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                const timeStr = lead.timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                let icon = 'monitor';
+                if(lead.os.includes('Mac') || lead.os.includes('iOS')) icon = 'command';
+                if(lead.os.includes('Android')) icon = 'smartphone';
+                
+                html += `
+                    <tr class="hover:bg-[#e0f2fe]/50 transition-colors group">
+                        <td class="px-6 py-4 text-[#556677] font-mono text-xs whitespace-nowrap border-b border-[#003366]/5">
+                            <div>${dateStr}</div><div class="text-[#8ba2be]">${timeStr}</div>
+                        </td>
+                        <td class="px-6 py-4 font-medium text-[#003366] select-all border-b border-[#003366]/5">${lead.email}</td>
+                        <td class="px-6 py-4 text-[#002244] border-b border-[#003366]/5">${lead.institute}</td>
+                        <td class="px-6 py-4 border-b border-[#003366]/5"><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f0f4f8] text-[#003366] border border-[#003366]/10"><i data-lucide="${icon}" class="w-3 h-3"></i> ${lead.os}</span></td>
+                        <td class="px-6 py-4 text-xs text-[#556677] font-mono border-b border-[#003366]/5">${lead.screen}</td>
+                        <td class="px-6 py-4 text-xs text-[#556677] font-mono border-b border-[#003366]/5">${lead.ip}</td>
+                        <td class="px-6 py-4 text-right border-b border-[#003366]/5">
+                            <button onclick="deleteEntry('${lead.id}', 'leads')" class="text-[#556677] hover:text-[#8B0000] opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tableBody.innerHTML = html;
+            lucide.createIcons();
+            document.getElementById('showing-text').textContent = `Showing ${data.length} entries`;
+        }
+
+        function updateStats(total, osCounts, lastTime) {
+            document.getElementById('total-count').textContent = total;
+            let topOS = 'N/A', maxCount = 0;
+            for(const [os, count] of Object.entries(osCounts)) {
+                if(count > maxCount) { maxCount = count; topOS = os; }
+            }
+            document.getElementById('top-os').textContent = topOS;
+            if (lastTime) {
+                const diff = Math.floor((new Date() - lastTime) / 60000);
+                document.getElementById('last-active').textContent = diff < 60 ? `${diff} mins ago` : `${Math.floor(diff/60)} hrs ago`;
+            }
+        }
+
+        // --- 4. INSTITUTIONAL LOGIC ---
+        async function fetchInstitutionalLeads() {
+            const tableBody = document.getElementById('inst-table-body');
+            try {
+                const q = query(collection(db, "institutional_leads"), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                allInstitutionalLeads = [];
+                let campusCount = 0;
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if(data.users === '500+') campusCount++;
+
+                    allInstitutionalLeads.push({
+                        id: doc.id,
+                        contactName: data.contactName,
+                        email: data.email,
+                        institution: data.institution,
+                        department: data.department,
+                        users: data.users,
+                        timestamp: data.timestamp ? data.timestamp.toDate() : new Date()
+                    });
+                });
+
+                // Update Stats
+                document.getElementById('inst-total-count').textContent = allInstitutionalLeads.length;
+                document.getElementById('inst-large-count').textContent = campusCount;
+                
+                if(allInstitutionalLeads.length > 0) {
+                    const lastTime = allInstitutionalLeads[0].timestamp;
+                    const diff = Math.floor((new Date() - lastTime) / 60000);
+                    document.getElementById('inst-last-active').textContent = diff < 60 ? `${diff} mins ago` : `${Math.floor(diff/60)} hrs ago`;
+                }
+
+                renderInstitutionalTable(allInstitutionalLeads);
+
+            } catch (error) {
+                console.error("Error fetching institutional leads:", error);
+                tableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-[#8B0000]">Error loading data.</td></tr>`;
+            }
+        }
+
+        function renderInstitutionalTable(data) {
+            const tableBody = document.getElementById('inst-table-body');
+            if (data.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-8 text-center text-[#556677]">No institutional requests found.</td></tr>`;
+                return;
+            }
+
+            let html = '';
+            data.forEach(lead => {
+                const dateStr = lead.timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                
+                // Badge color based on user count
+                let badgeClass = "bg-[#f0f4f8] text-[#556677] border border-[#003366]/10";
+                if(lead.users === '500+') badgeClass = "bg-green-100 text-green-800 border border-green-200";
+                if(lead.users === '50-500') badgeClass = "bg-blue-100 text-blue-800 border border-blue-200";
+
+                html += `
+                    <tr class="hover:bg-[#e0f2fe]/50 transition-colors group">
+                        <td class="px-6 py-4 text-[#556677] font-mono text-xs whitespace-nowrap border-b border-[#003366]/5">${dateStr}</td>
+                        <td class="px-6 py-4 font-bold text-[#003366] font-serif border-b border-[#003366]/5">${lead.institution}</td>
+                        <td class="px-6 py-4 border-b border-[#003366]/5">
+                            <div class="text-sm font-medium text-[#002244]">${lead.contactName}</div>
+                            <div class="text-xs text-[#556677]">${lead.email}</div>
+                        </td>
+                        <td class="px-6 py-4 text-[#002244] border-b border-[#003366]/5">${lead.department}</td>
+                        <td class="px-6 py-4 border-b border-[#003366]/5"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${badgeClass}">${lead.users}</span></td>
+                        <td class="px-6 py-4 text-right border-b border-[#003366]/5">
+                            <button onclick="deleteEntry('${lead.id}', 'institutional_leads')" class="text-[#556677] hover:text-[#8B0000] opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tableBody.innerHTML = html;
+            lucide.createIcons(); // Refresh icons
+        }
+
+
+        // --- 5. NOTIFICATION LOGIC (Realtime DB) ---
+        const liveRef = ref(dbRT, 'global_notification');
+        const historyRef = ref(dbRT, 'notification_logs');
+
+        function initNotifications() {
+            // Listen to Live Status
+            onValue(liveRef, (snapshot) => {
+                const data = snapshot.val();
+                const pulse = document.getElementById('livePulse');
+                const dot = document.getElementById('liveDot');
+                const card = document.getElementById('liveStatusCard');
+                const actions = document.getElementById('liveActions');
+
+                if (data && data.show) {
+                    // LIVE STATE (Red Light On)
+                    document.getElementById('liveTitle').innerText = data.title;
+                    document.getElementById('liveMessage').innerText = data.message;
+                    pulse.classList.remove('hidden');
+                    // Changed to Red for "Red Light" indicator
+                    dot.className = "relative inline-flex rounded-full h-3 w-3 bg-[#8B0000]"; 
+                    card.className = "paper-card p-6 relative overflow-hidden transition-all shadow-md border-l-4 border-l-[#8B0000]";
+                    
+                    // Show Turn Off Button
+                    actions.innerHTML = `
+                        <button onclick="clearLive()" class="w-full text-xs bg-red-50 text-[#8B0000] hover:bg-red-100 px-3 py-2 rounded-sm transition-colors border border-[#8B0000]/20 flex items-center justify-center gap-2 font-bold uppercase tracking-wide">
+                            <i data-lucide="power-off" class="w-3 h-3"></i> Turn Off Notification
+                        </button>
+                    `;
+                    actions.classList.remove('hidden');
+                } else {
+                    // OFFLINE STATE
+                    document.getElementById('liveTitle').innerText = "Notification Offline";
+                    document.getElementById('liveMessage').innerText = "No active alert is being shown to users.";
+                    pulse.classList.add('hidden');
+                    dot.className = "relative inline-flex rounded-full h-3 w-3 bg-gray-300";
+                    card.className = "paper-card p-6 relative overflow-hidden transition-all shadow-sm";
+                    
+                    // Show "Turn On" Button if data exists
+                    if (data && (data.title || data.message)) {
+                        actions.innerHTML = `
+                            <button onclick="turnOnLive()" class="w-full text-xs bg-green-50 text-green-700 hover:bg-green-100 px-3 py-2 rounded-sm transition-colors border border-green-200 flex items-center justify-center gap-2 font-bold uppercase tracking-wide">
+                                <i data-lucide="power" class="w-3 h-3"></i> Turn On Notification
+                            </button>
+                        `;
+                        actions.classList.remove('hidden');
+                    } else {
+                        actions.classList.add('hidden');
+                    }
+                }
+                lucide.createIcons(); // Re-render icons after HTML injection
+            });
+
+            // Listen to History
+            onValue(historyRef, (snapshot) => {
+                const list = document.getElementById('historyList');
+                list.innerHTML = "";
+                const entries = [];
+                snapshot.forEach(child => entries.push({ id: child.key, ...child.val() }));
+                entries.reverse(); // Newest first
+
+                document.getElementById('historyCount').innerText = entries.length;
+
+                if(entries.length === 0) {
+                    list.innerHTML = '<div class="text-center text-[#556677] py-10 font-serif italic">No history found.</div>';
+                    return;
+                }
+
+                entries.forEach(item => {
+                    const date = item.timestamp ? (new Date(item.timestamp).toLocaleDateString() + ' ' + new Date(item.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})) : 'N/A';
+                    
+                    const el = document.createElement('div');
+                    el.className = "bg-white border border-[#003366]/10 rounded-sm p-4 hover:border-[#003366] transition-all group shadow-sm";
+                    el.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1 pr-4">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h4 class="font-bold text-[#003366] font-display text-lg">${escapeHtml(item.title)}</h4>
+                                    <span class="text-[10px] bg-[#f0f4f8] text-[#556677] px-1.5 py-0.5 rounded border border-[#003366]/10 font-mono">${date}</span>
+                                </div>
+                                <p class="text-sm text-[#002244] line-clamp-2 font-serif">${escapeHtml(item.message)}</p>
+                            </div>
+                            <div class="flex gap-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+                                <button onclick="loadNotifyEditor('${item.id}', '${escapeHtml(item.title)}', '${escapeHtml(item.message)}', '${item.link || ''}', '${item.btnText || ''}')" 
+                                    class="p-2 text-[#003366] hover:bg-[#e0f2fe] rounded" title="Reuse">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                                <button onclick="deleteLog('${item.id}')" 
+                                    class="p-2 text-[#556677] hover:text-[#8B0000] hover:bg-red-50 rounded" title="Delete">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(el);
+                });
+                lucide.createIcons();
+            });
+        }
+
+        // Notification Actions attached to Window
+        window.handleNotifySubmit = function(e) {
+            e.preventDefault();
+            const payload = {
+                title: document.getElementById('inputTitle').value,
+                message: document.getElementById('inputMessage').value,
+                link: document.getElementById('inputLink').value,
+                btnText: document.getElementById('inputBtn').value,
+                timestamp: Date.now(),
+                show: true
+            };
+
+            // Push Live
+            set(liveRef, payload);
+
+            // Add to History
+            push(historyRef, payload);
+
+            resetNotifyForm();
+            alert("Notification Pushed Live!");
+        }
+
+        window.clearLive = function() {
+            update(liveRef, { show: false });
+        }
+        
+        // New Function: Turn On without creating new record
+        window.turnOnLive = function() {
+            update(liveRef, { show: true });
+        }
+
+        window.deleteLog = function(key) {
+            if(confirm("Delete this history record?")) {
+                remove(ref(dbRT, `notification_logs/${key}`));
+            }
+        }
+        
+        // --- NEW: DELETE ALL LOGS ---
+        window.deleteAllLogs = function() {
+            if(confirm("⚠️ ARE YOU SURE?\n\nThis will delete ALL notification history logs permanently.\nThis action cannot be undone.")) {
+                remove(ref(dbRT, 'notification_logs'));
+            }
+        }
+
+        window.loadNotifyEditor = function(id, title, msg, link, btn) {
+            document.getElementById('inputTitle').value = title;
+            document.getElementById('inputMessage').value = msg;
+            document.getElementById('inputLink').value = link;
+            document.getElementById('inputBtn').value = btn;
+            
+            // Highlight form
+            document.getElementById('inputTitle').focus();
+        }
+
+        window.resetNotifyForm = function() {
+            document.getElementById('notifyForm').reset();
+            document.getElementById('inputBtn').value = "Read More";
+        }
+
+        // --- 5. SHARED HELPERS ---
+        
+        window.escapeHtml = function(text) {
+            if (!text) return "";
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+
+        window.filterTable = function() {
+            const term = document.getElementById('search-input').value.toLowerCase();
+            // Filter Leads
+            if(document.getElementById('view-leads').classList.contains('active')) {
+                const filtered = allLeads.filter(lead => 
+                    lead.email.toLowerCase().includes(term) || 
+                    lead.institute.toLowerCase().includes(term) ||
+                    lead.os.toLowerCase().includes(term)
+                );
+                renderTable(filtered);
+            }
+            // Filter Institutional
+            else if(document.getElementById('view-institutional').classList.contains('active')) {
+                const filtered = allInstitutionalLeads.filter(lead => 
+                    lead.institution.toLowerCase().includes(term) ||
+                    lead.department.toLowerCase().includes(term) ||
+                    lead.contactName.toLowerCase().includes(term)
+                );
+                renderInstitutionalTable(filtered);
+            }
+        }
+
+        window.deleteEntry = async function(id, collectionName) {
+            if(confirm('Delete this entry?')) {
+                try {
+                    await deleteDoc(firestoreDoc(db, collectionName, id));
+                    if(collectionName === 'leads') fetchLeads();
+                    if(collectionName === 'institutional_leads') fetchInstitutionalLeads();
+                } catch(err) { alert('Error: ' + err.message); }
+            }
+        }
+
+        window.exportToCSV = function(type) {
+            let data = (type === 'institutional') ? allInstitutionalLeads : allLeads;
+            if(data.length === 0) return alert("No data");
+            
+            let csv = "";
+            if(type === 'institutional') {
+                csv = "Timestamp,Institution,Contact Name,Email,Department,Users\n";
+                data.forEach(l => {
+                    csv += `${l.timestamp.toISOString()},"${l.institution}","${l.contactName}",${l.email},"${l.department}",${l.users}\n`;
+                });
+            } else {
+                csv = "Timestamp,Email,Institute,OS,Screen,IP\n";
+                data.forEach(l => {
+                    csv += `${l.timestamp.toISOString()},${l.email},"${l.institute}",${l.os},${l.screen},${l.ip}\n`;
+                });
+            }
+            
+            const link = document.createElement("a");
+            link.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
+            link.download = `texwolf_${type}_data.csv`;
+            link.click();
+        }
+
+        // Init icons
+        lucide.createIcons();
+
+    </script>
+</body>
+</html>
